@@ -1,0 +1,216 @@
+{% extends 'base.html' %}
+
+{% block title %}CCMS | Officer Dashboard{% endblock %}
+
+{% block content %}
+<!-- Dashboard Welcome Header -->
+<div class="row align-items-center mb-5">
+    <div class="col-md-8">
+        <h2 class="text-white mb-1"><i class="bi bi-speedometer2 text-info me-2"></i>Officer Dashboard</h2>
+        <p class="text-white-50 mb-0">
+            Welcome, <strong class="text-white">{{ profile.user.username }}</strong>. 
+            Assigned Scope: <span class="badge bg-secondary px-2 py-1">{{ scope_title }}</span>
+        </p>
+    </div>
+</div>
+
+<!-- Metrics Cards Row -->
+<div class="row g-3 mb-5">
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Pending</span>
+            <span class="display-6 fw-bold text-warning">{{ pending_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">In Progress</span>
+            <span class="display-6 fw-bold text-info">{{ progress_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Resolved</span>
+            <span class="display-6 fw-bold text-success">{{ resolved_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Rejected</span>
+            <span class="display-6 fw-bold text-danger">{{ rejected_count }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Filters Panel -->
+<div class="glass-panel p-4 mb-4">
+    <h5 class="mb-3 text-white-50">Filter Complaints</h5>
+    <form method="GET" action="{% url 'officer_dashboard' %}" class="row g-3 align-items-end">
+        <div class="col-md-4">
+            <label class="form-label text-white-50 fs-7">Search Query</label>
+            <input type="text" name="search" class="form-control glass-input" placeholder="Search Reference, Title, Citizen..." value="{{ search_query }}">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label text-white-50 fs-7">Category</label>
+            <select name="category" class="form-select glass-input">
+                <option value="">-- All Categories --</option>
+                {% for cat_val, cat_lbl in categories %}
+                    <option value="{{ cat_val }}" {% if selected_category == cat_val %}selected{% endif %}>{{ cat_lbl }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label text-white-50 fs-7">Status</label>
+            <select name="status" class="form-select glass-input">
+                <option value="">-- All Statuses --</option>
+                {% for stat_val, stat_lbl in statuses %}
+                    <option value="{{ stat_val }}" {% if selected_status == stat_val %}selected{% endif %}>{{ stat_lbl }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2 d-grid">
+            <button type="submit" class="btn btn-premium py-2">
+                <i class="bi bi-filter me-1"></i> Apply
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Complaints List Card -->
+<div class="glass-panel p-4">
+    <h4 class="mb-4">Assigned Public Complaints ({{ complaints.count }})</h4>
+    
+    {% if not complaints %}
+        <div class="text-center py-5 text-white-50">
+            <i class="bi bi-inbox fs-1 d-block mb-3 text-secondary"></i>
+            No complaints found matching the filters or scope.
+        </div>
+    {% else %}
+        <div class="table-responsive">
+            <table class="table table-hover table-glass align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Ref Number</th>
+                        <th>Date Submitted</th>
+                        <th>Category</th>
+                        <th>Complaint Subject</th>
+                        <th>Citizen</th>
+                        <th>Status</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in complaints %}
+                        <tr>
+                            <td>
+                                <code class="text-info fs-6 fw-bold">{{ c.reference_number }}</code>
+                            </td>
+                            <td class="text-white-50 fs-7">
+                                {{ c.created_at|date:"M d, Y" }}
+                            </td>
+                            <td class="fs-7">
+                                {{ c.get_category_display }}
+                            </td>
+                            <td class="text-truncate" style="max-width: 250px;">
+                                {{ c.title }}
+                            </td>
+                            <td class="fs-7 text-white-50">
+                                {{ c.citizen_name }}
+                            </td>
+                            <td>
+                                {% if c.status == 'PENDING' %}
+                                    <span class="badge badge-pending">Pending</span>
+                                {% elif c.status == 'IN_PROGRESS' %}
+                                    <span class="badge badge-progress">In Progress</span>
+                                {% elif c.status == 'RESOLVED' %}
+                                    <span class="badge badge-resolved">Resolved</span>
+                                {% elif c.status == 'REJECTED' %}
+                                    <span class="badge badge-rejected">Rejected</span>
+                                {% endif %}
+                            </td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#updateModal{{ c.id }}">
+                                    <i class="bi bi-pencil-square me-1"></i> Review
+                                </button>
+                            </td>
+                        </tr>
+
+                        <!-- Modal Window for Complaint Review and Update -->
+                        <div class="modal fade" id="updateModal{{ c.id }}" tabindex="-1" aria-labelledby="modalLabel{{ c.id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-lg modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalLabel{{ c.id }}">Review Complaint: {{ c.reference_number }}</h5>
+                                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row g-3 mb-4">
+                                            <div class="col-md-6">
+                                                <h6 class="text-white-50 fs-8 mb-1">CITIZEN DETAIL</h6>
+                                                <p class="mb-0">{{ c.citizen_name }} ({{ c.citizen_phone }} | {{ c.citizen_email }})</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6 class="text-white-50 fs-8 mb-1">LOCATION / WASAMA</h6>
+                                                <p class="mb-0">{{ c.wasama.name }} GN, {{ c.pradeshiya_sabha.name }}</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <h6 class="text-white-50 fs-8 mb-1">COMPLAINT SUBJECT</h6>
+                                                <p class="mb-0 fw-semibold">{{ c.title }}</p>
+                                            </div>
+                                            <div class="col-12">
+                                                <h6 class="text-white-50 fs-8 mb-1">DESCRIPTION</h6>
+                                                <p class="mb-0 text-white-50 bg-black bg-opacity-20 p-3 rounded" style="white-space: pre-line;">{{ c.description }}</p>
+                                            </div>
+                                            
+                                            {% if c.evidence_file %}
+                                            <div class="col-12">
+                                                <h6 class="text-info fs-8 mb-2">ATTACHED EVIDENCE</h6>
+                                                {% with extension=c.evidence_file.name|lower %}
+                                                    {% if '.jpg' in extension or '.jpeg' in extension or '.png' in extension or '.gif' in extension or '.webp' in extension %}
+                                                        <div class="text-center bg-black bg-opacity-20 p-2 rounded">
+                                                            <img src="{{ c.evidence_file.url }}" class="img-fluid rounded" style="max-height: 250px;">
+                                                        </div>
+                                                    {% else %}
+                                                        <a href="{{ c.evidence_file.url }}" target="_blank" class="btn btn-glass btn-sm">
+                                                            <i class="bi bi-download me-2"></i>Download Evidence File ({{ c.evidence_file.name }})
+                                                        </a>
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+
+                                        <form method="POST" action="{% url 'update_complaint_status' complaint_id=c.id %}">
+                                            {% csrf_token %}
+                                            <h5 class="border-top border-secondary pt-3 mb-3 text-info">Update Progress</h5>
+                                            
+                                            <div class="row g-3">
+                                                <div class="col-md-6">
+                                                    <label class="form-label text-white-50">Select Status</label>
+                                                    <select name="status" class="form-select modal-input" required>
+                                                        {% for stat_val, stat_lbl in statuses %}
+                                                            <option value="{{ stat_val }}" {% if c.status == stat_val %}selected{% endif %}>{{ stat_lbl }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label class="form-label text-white-50">Action Remark / Explanation</label>
+                                                    <textarea name="remark" class="form-control modal-input" rows="3" placeholder="Describe the action taken or reasoning for status update..." required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer px-0 pb-0 mt-4">
+                                                <button type="button" class="btn btn-glass" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-premium">Submit Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

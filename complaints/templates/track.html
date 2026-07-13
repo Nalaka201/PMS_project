@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}CCMS | Track {{ complaint.reference_number }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-lg-10">
+        <!-- Header Panel -->
+        <div class="glass-panel p-4 mb-4 d-flex flex-wrap justify-content-between align-items-center gap-3">
+            <div>
+                <span class="text-white-50 fs-6">TRACK COMPLAINT</span>
+                <h2 class="mb-0 text-white" style="letter-spacing: 0.05em;">{{ complaint.reference_number }}</h2>
+            </div>
+            <div>
+                <span class="fs-6 me-2 text-white-50">Current Status:</span>
+                {% if complaint.status == 'PENDING' %}
+                    <span class="badge badge-pending px-3 py-2 fs-6">Pending (නොවිසඳුනු)</span>
+                {% elif complaint.status == 'IN_PROGRESS' %}
+                    <span class="badge badge-progress px-3 py-2 fs-6">In Progress (ක්‍රියාත්මක වෙමින්)</span>
+                {% elif complaint.status == 'RESOLVED' %}
+                    <span class="badge badge-resolved px-3 py-2 fs-6">Resolved (විසඳන ලද)</span>
+                {% elif complaint.status == 'REJECTED' %}
+                    <span class="badge badge-rejected px-3 py-2 fs-6">Rejected (ප්‍රතික්ෂේපිත)</span>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Left Column: Details -->
+            <div class="col-md-7">
+                <div class="glass-panel p-4 h-100">
+                    <h4 class="mb-4 text-info border-bottom border-secondary pb-2">Complaint Details</h4>
+                    
+                    <dl class="row text-white-50">
+                        <dt class="col-sm-4">Category</dt>
+                        <dd class="col-sm-8 text-white fw-medium">{{ complaint.get_category_display }}</dd>
+
+                        <dt class="col-sm-4">Title / Subject</dt>
+                        <dd class="col-sm-8 text-white">{{ complaint.title }}</dd>
+
+                        <dt class="col-sm-4">Submitted On</dt>
+                        <dd class="col-sm-8 text-white-50">{{ complaint.created_at|date:"F d, Y, g:i a" }}</dd>
+
+                        <dt class="col-sm-4">Location</dt>
+                        <dd class="col-sm-8 text-white">
+                            {{ complaint.wasama.name }} ({{ complaint.wasama.code }}), <br>
+                            {{ complaint.pradeshiya_sabha.name }}, {{ complaint.district.name }} District.
+                        </dd>
+                    </dl>
+
+                    <div class="mt-4 p-3 bg-white bg-opacity-5 rounded border border-secondary">
+                        <h6 class="text-white-50 mb-2">Description:</h6>
+                        <p class="mb-0 text-white-50" style="white-space: pre-line; line-height: 1.6;">{{ complaint.description }}</p>
+                    </div>
+
+                    <!-- Media evidence preview -->
+                    {% if complaint.evidence_file %}
+                        <div class="mt-4 border-top border-secondary pt-3">
+                            <h6 class="text-info mb-2"><i class="bi bi-paperclip me-1"></i>Attached Evidence:</h6>
+                            {% with extension=complaint.evidence_file.name|lower %}
+                                {% if '.jpg' in extension or '.jpeg' in extension or '.png' in extension or '.gif' in extension or '.webp' in extension %}
+                                    <div class="text-center bg-black bg-opacity-20 p-2 rounded border border-secondary">
+                                        <img src="{{ complaint.evidence_file.url }}" class="img-fluid rounded" style="max-height: 350px;" alt="Attached image evidence">
+                                    </div>
+                                {% elif '.mp3' in extension or '.wav' in extension or '.ogg' in extension or '.m4a' in extension %}
+                                    <div class="bg-black bg-opacity-20 p-3 rounded border border-secondary">
+                                        <audio controls class="w-100">
+                                            <source src="{{ complaint.evidence_file.url }}">
+                                            Your browser does not support the audio player.
+                                        </audio>
+                                    </div>
+                                {% elif '.mp4' in extension or '.webm' in extension or '.mov' in extension %}
+                                    <div class="text-center bg-black bg-opacity-20 p-2 rounded border border-secondary">
+                                        <video controls class="w-100 rounded" style="max-height: 350px;">
+                                            <source src="{{ complaint.evidence_file.url }}">
+                                            Your browser does not support the video playback.
+                                        </video>
+                                    </div>
+                                {% else %}
+                                    <div>
+                                        <a href="{{ complaint.evidence_file.url }}" target="_blank" class="btn btn-glass btn-sm">
+                                            <i class="bi bi-download me-2"></i>Download File Attachment
+                                        </a>
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Right Column: Status updates and Timeline -->
+            <div class="col-md-5">
+                <div class="glass-panel p-4 h-100">
+                    <h4 class="mb-4 text-info border-bottom border-secondary pb-2">Status Timeline</h4>
+                    
+                    {% if not remarks %}
+                        <div class="text-center py-5 text-white-50">
+                            <i class="bi bi-info-circle fs-2 d-block mb-3 text-secondary"></i>
+                            No remarks or status updates recorded yet. The complaint is currently awaiting review.
+                        </div>
+                    {% else %}
+                        <div class="timeline mt-3">
+                            {% for r in remarks %}
+                                <div class="timeline-item {% if r.status_to == 'RESOLVED' %}resolved{% elif r.status_to == 'REJECTED' %}rejected{% endif %}">
+                                    <div class="d-flex justify-content-between align-items-baseline mb-1">
+                                        <h6 class="mb-0 text-white fw-bold">
+                                            Status: 
+                                            {% if r.status_to == 'PENDING' %}<span class="text-warning">Pending</span>
+                                            {% elif r.status_to == 'IN_PROGRESS' %}<span class="text-info">In Progress</span>
+                                            {% elif r.status_to == 'RESOLVED' %}<span class="text-success">Resolved</span>
+                                            {% elif r.status_to == 'REJECTED' %}<span class="text-danger">Rejected</span>
+                                            {% endif %}
+                                        </h6>
+                                        <small class="text-secondary">{{ r.created_at|date:"M d, g:i a" }}</small>
+                                    </div>
+                                    <p class="mb-0 text-white-50 fs-7" style="line-height: 1.5;">
+                                        {{ r.remark }}
+                                    </p>
+                                    <small class="text-info-subtle d-block mt-1 fs-8">
+                                        Update by: {{ r.officer.username|default:"System" }}
+                                    </small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'index' %}" class="btn btn-glass px-4">
+                <i class="bi bi-arrow-left me-1"></i> Back to Homepage
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

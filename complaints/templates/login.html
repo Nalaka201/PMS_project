@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}CCMS | Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center align-items-center py-5 min-vh-75">
+    <div class="col-md-6 col-lg-5">
+        <div class="glass-panel p-4 p-md-5 shadow-lg border border-secondary">
+            <div class="text-center mb-5">
+                <div class="d-inline-flex p-3 rounded-circle bg-info-subtle mb-3">
+                    <i class="bi bi-shield-lock fs-1 text-info"></i>
+                </div>
+                <h2 class="text-white">Officer Portal</h2>
+                <p class="text-white-50">Please authenticate to access your dashboard</p>
+            </div>
+
+            {% if form.errors %}
+                <div class="alert alert-danger glass-panel border-danger text-danger mb-4" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i> Invalid username or password. Please try again.
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'login' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                {% if next %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                {% endif %}
+                
+                <div class="mb-4">
+                    <label for="username" class="form-label text-white-50">Username</label>
+                    <div class="input-group">
+                        <span class="input-group-text glass-input border-end-0"><i class="bi bi-person text-secondary"></i></span>
+                        <input type="text" name="username" id="username" class="form-control glass-input border-start-0" placeholder="Enter username" required autofocus>
+                        <div class="invalid-feedback">Please enter your username.</div>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label text-white-50">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text glass-input border-end-0"><i class="bi bi-key text-secondary"></i></span>
+                        <input type="password" name="password" id="password" class="form-control glass-input border-start-0" placeholder="Enter password" required>
+                        <div class="invalid-feedback">Please enter your password.</div>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-5">
+                    <button type="submit" class="btn btn-premium btn-lg py-3">
+                        Login <i class="bi bi-box-arrow-in-right ms-1"></i>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="text-center mt-4">
+                <a href="{% url 'index' %}" class="text-white-50 text-decoration-none">
+                    <i class="bi bi-arrow-left me-1"></i> Back to Citizen Homepage
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Self-executing Bootstrap form validator loop
+    (function () {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+</script>
+{% endblock %}

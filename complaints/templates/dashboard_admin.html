@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+
+{% block title %}CCMS | Administrator Dashboard{% endblock %}
+
+{% block content %}
+<div class="row align-items-center mb-5">
+    <div class="col-md-8">
+        <h2 class="text-white mb-1"><i class="bi bi-shield-lock text-info me-2"></i>Administrator Dashboard</h2>
+        <p class="text-white-50 mb-0">System configuration, officer assignments, and global statistics</p>
+    </div>
+</div>
+
+<!-- KPI Cards -->
+<div class="row g-3 mb-5">
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Global Complaints</span>
+            <span class="display-6 fw-bold text-white">{{ total_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Awaiting Review</span>
+            <span class="display-6 fw-bold text-warning">{{ pending_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">In Progress</span>
+            <span class="display-6 fw-bold text-info">{{ progress_count }}</span>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="glass-panel p-4 text-center">
+            <span class="text-white-50 d-block mb-1 fs-6">Resolved Cases</span>
+            <span class="display-6 fw-bold text-success">{{ resolved_count }}</span>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Section -->
+<div class="row g-4 mb-5">
+    <div class="col-md-6">
+        <div class="glass-panel p-4">
+            <h5 class="mb-4 text-info"><i class="bi bi-pie-chart me-2"></i>Complaints by Category</h5>
+            <div style="position: relative; height:250px;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="glass-panel p-4">
+            <h5 class="mb-4 text-info"><i class="bi bi-bar-chart-line me-2"></i>Complaints by District</h5>
+            <div style="position: relative; height:250px;">
+                <canvas id="districtChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Officer Management Panel -->
+    <div class="col-lg-8">
+        <div class="glass-panel p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="mb-0"><i class="bi bi-people me-2 text-info"></i>System Officers</h4>
+                <button type="button" class="btn btn-premium btn-sm" data-bs-toggle="modal" data-bs-target="#createOfficerModal">
+                    <i class="bi bi-plus-circle me-1"></i> Add Officer
+                </button>
+            </div>
+            
+            {% if not officers %}
+                <div class="text-center py-5 text-white-50">
+                    <i class="bi bi-person-slash fs-2 d-block mb-3"></i>
+                    No officers registered in the system yet.
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-hover table-glass align-middle mb-0">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Assigned District</th>
+                                <th>Assigned Sabha</th>
+                                <th>Assigned Wasama</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for off in officers %}
+                                <tr>
+                                    <td class="fw-bold">{{ off.user.username }}</td>
+                                    <td class="text-white-50 fs-7">{{ off.user.email }}</td>
+                                    <td>{{ off.assigned_district.name|default:"--" }}</td>
+                                    <td>{{ off.assigned_pradeshiya_sabha.name|default:"--" }}</td>
+                                    <td class="fs-7 text-white-50">{{ off.assigned_wasama.name|default:"--" }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recent Complaints Panel -->
+    <div class="col-lg-4">
+        <div class="glass-panel p-4 h-100">
+            <h4 class="mb-4"><i class="bi bi-clock-history me-2 text-info"></i>Recent Submissions</h4>
+            {% if not complaints %}
+                <div class="text-center py-5 text-white-50">No complaints logged yet.</div>
+            {% else %}
+                <div class="list-group list-group-flush bg-transparent">
+                    {% for c in complaints %}
+                        <div class="list-group-item bg-transparent text-white border-secondary px-0 py-3">
+                            <div class="d-flex w-100 justify-content-between mb-1">
+                                <h6 class="mb-0 text-truncate" style="max-width: 180px;">{{ c.title }}</h6>
+                                <small class="text-info fs-7">{{ c.reference_number }}</small>
+                            </div>
+                            <p class="mb-1 text-white-50 fs-7 text-truncate">{{ c.wasama.name }}, {{ c.pradeshiya_sabha.name }}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="fs-8 text-secondary">{{ c.created_at|date:"M d, Y" }}</span>
+                                {% if c.status == 'PENDING' %}
+                                    <span class="badge badge-pending fs-8">Pending</span>
+                                {% elif c.status == 'IN_PROGRESS' %}
+                                    <span class="badge badge-progress fs-8">In Progress</span>
+                                {% elif c.status == 'RESOLVED' %}
+                                    <span class="badge badge-resolved fs-8">Resolved</span>
+                                {% elif c.status == 'REJECTED' %}
+                                    <span class="badge badge-rejected fs-8">Rejected</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Modal to create new Officer -->
+<div class="modal fade" id="createOfficerModal" tabindex="-1" aria-labelledby="createOfficerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createOfficerModalLabel">Create New Officer Account</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="POST" action="{% url 'admin_dashboard' %}" class="needs-validation" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="action" value="create_officer">
+                
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">Username</label>
+                        <input type="text" name="username" class="form-control modal-input" required>
+                        <div class="invalid-feedback">Please enter a username.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">Email Address</label>
+                        <input type="email" name="email" class="form-control modal-input" required>
+                        <div class="invalid-feedback">Please enter a valid email.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">Password</label>
+                        <input type="password" name="password" class="form-control modal-input" required>
+                        <div class="invalid-feedback">Please enter a password.</div>
+                    </div>
+                    
+                    <h6 class="border-top border-secondary pt-3 mt-4 mb-3 text-info">Jurisdiction Scope Assignment</h6>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">District</label>
+                        <select name="district" id="id_admin_district" class="form-select modal-input">
+                            <option value="">-- Global / No Assignment --</option>
+                            {% for d in districts %}
+                                <option value="{{ d.id }}">{{ d.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">Pradeshiya Sabha</label>
+                        <select name="sabha" id="id_admin_sabha" class="form-select modal-input" disabled>
+                            <option value="">-- Select Pradeshiya Sabha --</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white-50">Wasama / GN Division</label>
+                        <select name="wasama" id="id_admin_wasama" class="form-select modal-input" disabled>
+                            <option value="">-- Select Wasama --</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-glass" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-premium">Register Officer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Chart Configuration
+        const catLabels = {{ category_labels|safe }};
+        const catCounts = {{ category_counts|safe }};
+        const distLabels = {{ district_labels|safe }};
+        const distCounts = {{ district_counts|safe }};
+
+        // Render Category Doughnut Chart
+        const catCtx = document.getElementById('categoryChart').getContext('2d');
+        new Chart(catCtx, {
+            type: 'doughnut',
+            data: {
+                labels: catLabels.length ? catLabels : ['No Data'],
+                datasets: [{
+                    data: catCounts.length ? catCounts : [1],
+                    backgroundColor: [
+                        '#6366f1', '#38bdf8', '#10b981', '#f59e0b', 
+                        '#ef4444', '#06b6d4', '#ec4899', '#8b5cf6'
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#111827'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { color: '#9ca3af', font: { family: 'Inter' } }
+                    }
+                }
+            }
+        });
+
+        // Render District Bar Chart
+        const distCtx = document.getElementById('districtChart').getContext('2d');
+        new Chart(distCtx, {
+            type: 'bar',
+            data: {
+                labels: distLabels.length ? distLabels : ['No Data'],
+                datasets: [{
+                    label: 'Complaints',
+                    data: distCounts.length ? distCounts : [0],
+                    backgroundColor: 'rgba(99, 102, 241, 0.65)',
+                    borderColor: '#6366f1',
+                    borderWidth: 1,
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#9ca3af' },
+                        grid: { color: 'rgba(255, 255, 255, 0.05)' }
+                    },
+                    x: {
+                        ticks: { color: '#9ca3af' },
+                        grid: { display: false }
+                    }
+                }
+            }
+        });
+
+        // 2. Cascade Dropdowns for Officer Creation Form
+        const distSelect = document.getElementById('id_admin_district');
+        const sabhaSelect = document.getElementById('id_admin_sabha');
+        const wasamaSelect = document.getElementById('id_admin_wasama');
+
+        distSelect.addEventListener('change', function() {
+            const districtId = this.value;
+            sabhaSelect.innerHTML = '<option value="">-- Select Pradeshiya Sabha --</option>';
+            wasamaSelect.innerHTML = '<option value="">-- Select Wasama --</option>';
+            wasamaSelect.disabled = true;
+
+            if (districtId) {
+                fetch(`/api/get_sabhas/?district_id=${districtId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id;
+                            option.textContent = item.name;
+                            sabhaSelect.appendChild(option);
+                        });
+                        sabhaSelect.disabled = false;
+                    })
+                    .catch(err => console.error("Error loading Sabhas:", err));
+            } else {
+                sabhaSelect.disabled = true;
+            }
+        });
+
+        sabhaSelect.addEventListener('change', function() {
+            const sabhaId = this.value;
+            wasamaSelect.innerHTML = '<option value="">-- Select Wasama --</option>';
+
+            if (sabhaId) {
+                fetch(`/api/get_wasamas/?sabha_id=${sabhaId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        data.forEach(item => {
+                            const option = document.createElement('option');
+                            option.value = item.id;
+                            option.textContent = item.code ? `${item.name} (${item.code})` : item.name;
+                            wasamaSelect.appendChild(option);
+                        });
+                        wasamaSelect.disabled = false;
+                    })
+                    .catch(err => console.error("Error loading Wasamas:", err));
+            } else {
+                wasamaSelect.disabled = true;
+            }
+        });
+
+        // Form Validation Loop
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    });
+</script>
+{% endblock %}
