@@ -18,6 +18,7 @@
     {% block extra_css %}{% endblock %}
 </head>
 <body>
+    {% load i18n %}
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg sticky-top glass-panel m-3 shadow-sm" style="border-radius: 12px; margin-bottom: 2rem !important;">
         <div class="container-fluid px-4">
@@ -25,7 +26,7 @@
                 <i class="bi bi-shield-check text-info me-2 fs-3"></i>
                 <div>
                     <span class="d-block lh-sm fs-5">CCMS</span>
-                    <span class="d-block text-secondary fs-6 fw-normal d-none d-sm-inline">පුරවැසි පැමිණිලි කළමනාකරණ පද්ධතිය</span>
+                    <span class="d-block text-secondary fs-6 fw-normal d-none d-sm-inline">{% trans "Citizen Complaint Management System" %}</span>
                 </div>
             </a>
             <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,15 +35,64 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item px-2">
-                        <a class="nav-link text-white-50" href="{% url 'index' %}"><i class="bi bi-house-door me-1"></i> Home</a>
+                        <a class="nav-link text-white-50" href="{% url 'index' %}"><i class="bi bi-house-door me-1"></i> {% trans "Home" %}</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-white-50" href="{% url 'lodge_complaint' %}"><i class="bi bi-file-earmark-plus me-1"></i> Lodge Complaint</a>
+                        <a class="nav-link text-white-50" href="{% url 'lodge_complaint' %}"><i class="bi bi-file-earmark-plus me-1"></i> {% trans "Lodge Complaint" %}</a>
                     </li>
                     <li class="nav-item px-2">
-                        <a class="nav-link text-white-50" href="{% url 'index' %}#track-section"><i class="bi bi-search me-1"></i> Track Status</a>
+                        <a class="nav-link text-white-50" href="{% url 'index' %}#track-section"><i class="bi bi-search me-1"></i> {% trans "Track Status" %}</a>
                     </li>
                     
+                    <span class="border-end border-secondary mx-3 d-none d-lg-block" style="height: 24px;"></span>
+
+                    <!-- Language Selector -->
+                    <li class="nav-item dropdown px-2">
+                        <a class="nav-link dropdown-toggle text-white-50 d-flex align-items-center gap-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="languageDropdown">
+                            <i class="bi bi-globe2 text-info"></i>
+                            {% get_current_language as LANGUAGE_CODE_CURRENT %}
+                            {% if LANGUAGE_CODE_CURRENT == 'si' %}
+                                <span>සිංහල</span>
+                            {% elif LANGUAGE_CODE_CURRENT == 'ta' %}
+                                <span>தமிழ்</span>
+                            {% else %}
+                                <span>English</span>
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end glass-panel border border-secondary shadow-lg" style="min-width: 150px;">
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <input type="hidden" name="language" value="en">
+                                    <button type="submit" class="dropdown-item text-white py-2 w-100 border-0 bg-transparent text-start {% if LANGUAGE_CODE_CURRENT == 'en' %}fw-bold text-info{% endif %}">
+                                        🇬🇧 English
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <input type="hidden" name="language" value="si">
+                                    <button type="submit" class="dropdown-item text-white py-2 w-100 border-0 bg-transparent text-start {% if LANGUAGE_CODE_CURRENT == 'si' %}fw-bold text-info{% endif %}">
+                                        🇱🇰 සිංහල
+                                    </button>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="next" value="{{ request.path }}">
+                                    <input type="hidden" name="language" value="ta">
+                                    <button type="submit" class="dropdown-item text-white py-2 w-100 border-0 bg-transparent text-start {% if LANGUAGE_CODE_CURRENT == 'ta' %}fw-bold text-info{% endif %}">
+                                        🇱🇰 தமிழ்
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+
                     <span class="border-end border-secondary mx-3 d-none d-lg-block" style="height: 24px;"></span>
                     
                     {% if user.is_authenticated %}
@@ -53,7 +103,7 @@
                             <ul class="dropdown-menu dropdown-menu-end glass-panel border border-secondary shadow-lg">
                                 <li>
                                     <a class="dropdown-item text-white py-2" href="{% url 'dashboard_router' %}">
-                                        <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                                        <i class="bi bi-speedometer2 me-2"></i> {% trans "Dashboard" %}
                                     </a>
                                 </li>
                                 <li><hr class="dropdown-divider border-secondary"></li>
@@ -61,7 +111,7 @@
                                     <form action="{% url 'logout' %}" method="post" class="d-inline">
                                         {% csrf_token %}
                                         <button type="submit" class="dropdown-item text-danger py-2 w-100 border-0 bg-transparent text-start">
-                                            <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                            <i class="bi bi-box-arrow-right me-2"></i> {% trans "Logout" %}
                                         </button>
                                     </form>
                                 </li>
@@ -70,7 +120,7 @@
                     {% else %}
                         <li class="nav-item px-2">
                             <a class="btn btn-glass px-4 py-2 d-flex align-items-center" href="{% url 'login' %}">
-                                <i class="bi bi-box-arrow-in-right me-1"></i> Officer Login
+                                <i class="bi bi-box-arrow-in-right me-1"></i> {% trans "Officer Login" %}
                             </a>
                         </li>
                     {% endif %}
@@ -112,7 +162,7 @@
         <div class="container text-center">
             <div class="row align-items-center">
                 <div class="col-md-6 text-md-start mb-2 mb-md-0 text-white-50">
-                    <p class="mb-0">&copy; 2026 Citizen Complaint Management System. All Rights Reserved.</p>
+                    <p class="mb-0">&copy; 2026 {% trans "Citizen Complaint Management System" %}. {% trans "All Rights Reserved." %}</p>
                 </div>
                 <div class="col-md-6 text-md-end text-white-50">
                     <span class="me-3">Democratic Socialist Republic of Sri Lanka</span>

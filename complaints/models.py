@@ -3,6 +3,7 @@ import random
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 class District(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -53,20 +54,20 @@ class OfficerProfile(models.Model):
 
 class Complaint(models.Model):
     CATEGORY_CHOICES = (
-        ('ROAD_DAMAGE', 'Road Damage (මාර්ග හානි)'),
-        ('WASTE_MGMT', 'Waste Management (කසළ කළමනාකරණය)'),
-        ('DRAINAGE', 'Drainage Issues (කාණු පද්ධති ගැටළු)'),
-        ('STREET_LIGHT', 'Street Lighting (විදුලි පහන් ගැටළු)'),
-        ('ENVIRONMENT', 'Environmental Concerns (පරිසර ගැටළු)'),
-        ('PUBLIC_SVC', 'Public Services (පොදු සේවා)'),
-        ('OTHER', 'Other (වෙනත්)'),
+        ('ROAD_DAMAGE', _('Road Damage')),
+        ('WASTE_MGMT', _('Waste Management')),
+        ('DRAINAGE', _('Drainage Issues')),
+        ('STREET_LIGHT', _('Street Lighting')),
+        ('ENVIRONMENT', _('Environmental Concerns')),
+        ('PUBLIC_SVC', _('Public Services')),
+        ('OTHER', _('Other')),
     )
 
     STATUS_CHOICES = (
-        ('PENDING', 'Pending (නොවිසඳුනු)'),
-        ('IN_PROGRESS', 'In Progress (ක්‍රියාත්මක වෙමින් පවතින)'),
-        ('RESOLVED', 'Resolved (විසඳන ලද)'),
-        ('REJECTED', 'Rejected (ප්‍රතික්ෂේප කරන ලද)'),
+        ('PENDING', _('Pending')),
+        ('IN_PROGRESS', _('In Progress')),
+        ('RESOLVED', _('Resolved')),
+        ('REJECTED', _('Rejected')),
     )
 
     reference_number = models.CharField(max_length=50, unique=True, editable=False)

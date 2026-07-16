@@ -1,86 +1,87 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}CCMS | Lodge Complaint{% endblock %}
+{% block title %}CCMS | {% trans "Lodge Complaint" %}{% endblock %}
 
 {% block content %}
 <div class="row justify-content-center py-4">
     <div class="col-lg-8">
         <div class="glass-panel p-4 p-md-5">
             <h2 class="mb-4 text-center">
-                <i class="bi bi-file-earmark-plus text-info me-2"></i>Submit a New Complaint
+                <i class="bi bi-file-earmark-plus text-info me-2"></i>{% trans "Submit a New Complaint" %}
             </h2>
             <p class="text-white-50 text-center mb-5">
-                Please fill out all the details accurately. Our officers will review your complaint based on the selected administrative boundary.
+                {% trans "Please fill out all the details accurately. Our officers will review your complaint based on the selected administrative boundary." %}
             </p>
 
             <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                 {% csrf_token %}
                 
-                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">1. Personal Information</h4>
+                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">1. {% trans "Personal Information" %}</h4>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <label for="id_citizen_name" class="form-label text-white-50">Your Name</label>
+                        <label for="id_citizen_name" class="form-label text-white-50">{% trans "Your Name" %}</label>
                         {{ form.citizen_name }}
-                        <div class="invalid-feedback">Please enter your name.</div>
+                        <div class="invalid-feedback">{% trans "Please enter your name." %}</div>
                     </div>
                     <div class="col-md-6">
-                        <label for="id_citizen_phone" class="form-label text-white-50">Contact Phone Number</label>
+                        <label for="id_citizen_phone" class="form-label text-white-50">{% trans "Contact Phone Number" %}</label>
                         {{ form.citizen_phone }}
-                        <div class="invalid-feedback">Please enter your phone number.</div>
+                        <div class="invalid-feedback">{% trans "Please enter your phone number." %}</div>
                     </div>
                     <div class="col-12">
-                        <label for="id_citizen_email" class="form-label text-white-50">Email Address</label>
+                        <label for="id_citizen_email" class="form-label text-white-50">{% trans "Email Address" %}</label>
                         {{ form.citizen_email }}
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                        <div class="invalid-feedback">{% trans "Please enter a valid email address." %}</div>
                     </div>
                 </div>
 
-                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">2. Jurisdiction / Location</h4>
+                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">2. {% trans "Jurisdiction / Location" %}</h4>
                 <div class="row g-3 mb-4">
                     <div class="col-md-4">
-                        <label for="id_district" class="form-label text-white-50">District (දිස්ත්‍රික්කය)</label>
+                        <label for="id_district" class="form-label text-white-50">{% trans "District" %}</label>
                         {{ form.district }}
-                        <div class="invalid-feedback">Please select a District.</div>
+                        <div class="invalid-feedback">{% trans "Please select a District." %}</div>
                     </div>
                     <div class="col-md-4">
-                        <label for="id_pradeshiya_sabha" class="form-label text-white-50">Pradeshiya Sabha (ප්‍රාදේශීය සභාව)</label>
+                        <label for="id_pradeshiya_sabha" class="form-label text-white-50">{% trans "Pradeshiya Sabha" %}</label>
                         {{ form.pradeshiya_sabha }}
-                        <div class="invalid-feedback">Please select a Pradeshiya Sabha.</div>
+                        <div class="invalid-feedback">{% trans "Please select a Pradeshiya Sabha." %}</div>
                     </div>
                     <div class="col-md-4">
-                        <label for="id_wasama" class="form-label text-white-50">Wasama / GN Division (වසම)</label>
+                        <label for="id_wasama" class="form-label text-white-50">{% trans "Wasama / GN Division" %}</label>
                         {{ form.wasama }}
-                        <div class="invalid-feedback">Please select a Wasama.</div>
+                        <div class="invalid-feedback">{% trans "Please select a Wasama." %}</div>
                     </div>
                 </div>
 
-                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">3. Complaint Details</h4>
+                <h4 class="mb-3 text-info border-bottom border-secondary pb-2">3. {% trans "Complaint Details" %}</h4>
                 <div class="row g-3 mb-4">
                     <div class="col-md-6">
-                        <label for="id_category" class="form-label text-white-50">Complaint Category</label>
+                        <label for="id_category" class="form-label text-white-50">{% trans "Complaint Category" %}</label>
                         {{ form.category }}
-                        <div class="invalid-feedback">Please select a category.</div>
+                        <div class="invalid-feedback">{% trans "Please select a category." %}</div>
                     </div>
                     <div class="col-md-6">
-                        <label for="id_title" class="form-label text-white-50">Subject / Title</label>
+                        <label for="id_title" class="form-label text-white-50">{% trans "Subject / Title" %}</label>
                         {{ form.title }}
-                        <div class="invalid-feedback">Please provide a subject.</div>
+                        <div class="invalid-feedback">{% trans "Please provide a subject." %}</div>
                     </div>
                     <div class="col-12">
-                        <label for="id_description" class="form-label text-white-50">Detailed Description</label>
+                        <label for="id_description" class="form-label text-white-50">{% trans "Detailed Description" %}</label>
                         {{ form.description }}
-                        <div class="invalid-feedback">Please write a description of the issue.</div>
+                        <div class="invalid-feedback">{% trans "Please write a description of the issue." %}</div>
                     </div>
                     <div class="col-12">
-                        <label for="id_evidence_file" class="form-label text-white-50">Upload Evidence (Images, Audio, Video)</label>
+                        <label for="id_evidence_file" class="form-label text-white-50">{% trans "Upload Evidence (Images, Audio, Video)" %}</label>
                         {{ form.evidence_file }}
-                        <small class="text-white-50 d-block mt-1">Upload supporting documentation, photos of damage, audio descriptions, or short video clips.</small>
+                        <small class="text-white-50 d-block mt-1">{% trans "Upload supporting documentation, photos of damage, audio descriptions, or short video clips." %}</small>
                     </div>
                 </div>
 
                 <div class="d-grid mt-5">
                     <button type="submit" class="btn btn-premium btn-lg py-3">
-                        <i class="bi bi-send-fill me-2"></i>Submit Complaint
+                        <i class="bi bi-send-fill me-2"></i>{% trans "Submit Complaint" %}
                     </button>
                 </div>
             </form>

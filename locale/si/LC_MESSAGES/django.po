@@ -1,0 +1,285 @@
+# Sinhala (si) Translations for CCMS
+# Generated for the Citizen Complaint Management System
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: si\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# --- Navbar ---
+msgid "Home"
+msgstr "මුල් පිටුව"
+
+msgid "Lodge Complaint"
+msgstr "පැමිණිල්ල ඉදිරිපත් කරන්න"
+
+msgid "Track Status"
+msgstr "තත්ත්වය නිරීක්ෂණය කරන්න"
+
+msgid "Officer Login"
+msgstr "නිලධාරී පිවිසුම"
+
+msgid "Dashboard"
+msgstr "පාලක පුවරුව"
+
+msgid "Logout"
+msgstr "පිටවන්න"
+
+msgid "Citizen Complaint Management System"
+msgstr "පුරවැසි පැමිණිලි කළමනාකරණ පද්ධතිය"
+
+msgid "All Rights Reserved."
+msgstr "සියලු හිමිකම් ඇවිරිණි."
+
+# --- Homepage ---
+msgid "Modernizing Public Service"
+msgstr "රාජ්‍ය සේවාව නවීකරණය"
+
+msgid "Complaint Management"
+msgstr "පැමිණිලි කළමනාකරණය"
+
+msgid "Submit public concerns online directly to your local Grama Niladhari division or Pradeshiya Sabha. Track progress transparently from reporting to resolution."
+msgstr "ඔබේ ග්‍රාම නිලධාරී කොට්ඨාශය හෝ ප්‍රාදේශීය සභාව වෙත සෘජුවම ඔබේ ගැටලු ඉදිරිපත් කරන්න. වාර්තා කිරීමේ සිට නිරාකරණය දක්වා ගමන ලුහු බඳින්න."
+
+msgid "Submit Complaint"
+msgstr "පැමිණිල්ල ඉදිරිපත් කරන්න"
+
+msgid "Track Complaint"
+msgstr "පැමිණිල්ල නිරීක්ෂණය කරන්න"
+
+msgid "Common Categories"
+msgstr "සාමාන්‍ය කාණ්ඩ"
+
+msgid "Road Damage"
+msgstr "මාර්ග හානි"
+
+msgid "Waste Management"
+msgstr "කසළ කළමනාකරණය"
+
+msgid "Drainage Issues"
+msgstr "කාණු ගැටලු"
+
+msgid "Street Lighting"
+msgstr "වීදි ආලෝකය"
+
+msgid "Environmental Concerns"
+msgstr "පරිසර ගැටලු"
+
+msgid "Public Services"
+msgstr "පොදු සේවා"
+
+msgid "Other"
+msgstr "වෙනත්"
+
+msgid "Track Your Complaint"
+msgstr "ඔබේ පැමිණිල්ල නිරීක්ෂණය කරන්න"
+
+msgid "Enter your unique complaint reference number (e.g."
+msgstr "ඔබේ අද්විතීය පැමිණිලි යොමු අංකය ඇතුළත් කරන්න (උදා:"
+
+msgid "below to view real-time status and officer remarks."
+msgstr "ස්ථිතිය සහ නිලධාරී සටහන් බලන්න."
+
+msgid "Search"
+msgstr "සොයන්න"
+
+msgid "Please provide a valid reference number."
+msgstr "කරුණාකර වලංගු යොමු අංකයක් ඇතුළත් කරන්න."
+
+# --- Lodge Complaint Form ---
+msgid "Submit a New Complaint"
+msgstr "නව පැමිණිල්ලක් ඉදිරිපත් කරන්න"
+
+msgid "Please fill out all the details accurately. Our officers will review your complaint based on the selected administrative boundary."
+msgstr "කරුණාකර සියලු විස්තර නිවැරදිව පුරවන්න. ඔබ තෝරාගත් පාලන සීමාව අනුව අපගේ නිලධාරීන් ඔබේ පැමිණිල්ල සමාලෝචනය කරනු ඇත."
+
+msgid "Personal Information"
+msgstr "පෞද්ගලික තොරතුරු"
+
+msgid "Your Name"
+msgstr "ඔබේ නම"
+
+msgid "Contact Phone Number"
+msgstr "සම්බන්ධ කරන දුරකථන අංකය"
+
+msgid "Email Address"
+msgstr "ඊ-තැපැල් ලිපිනය"
+
+msgid "Please enter your name."
+msgstr "කරුණාකර ඔබේ නම ඇතුළත් කරන්න."
+
+msgid "Please enter your phone number."
+msgstr "කරුණාකර ඔබේ දුරකථන අංකය ඇතුළත් කරන්න."
+
+msgid "Please enter a valid email address."
+msgstr "කරුණාකර වලංගු ඊ-තැපැල් ලිපිනයක් ඇතුළත් කරන්න."
+
+msgid "Jurisdiction / Location"
+msgstr "බලප්‍රදේශය / ස්ථානය"
+
+msgid "District"
+msgstr "දිස්ත්‍රික්කය"
+
+msgid "Pradeshiya Sabha"
+msgstr "ප්‍රාදේශීය සභාව"
+
+msgid "Wasama / GN Division"
+msgstr "වසම / ග්‍රාම නිලධාරී කොට්ඨාශය"
+
+msgid "Please select a District."
+msgstr "කරුණාකර දිස්ත්‍රික්කයක් තෝරන්න."
+
+msgid "Please select a Pradeshiya Sabha."
+msgstr "කරුණාකර ප්‍රාදේශීය සභාවක් තෝරන්න."
+
+msgid "Please select a Wasama."
+msgstr "කරුණාකර වසමක් තෝරන්න."
+
+msgid "Complaint Details"
+msgstr "පැමිණිලි විස්තර"
+
+msgid "Complaint Category"
+msgstr "පැමිණිලි කාණ්ඩය"
+
+msgid "Subject / Title"
+msgstr "විෂය / මාතෘකාව"
+
+msgid "Detailed Description"
+msgstr "සවිස්තරාත්මක විස්තරය"
+
+msgid "Upload Evidence (Images, Audio, Video)"
+msgstr "සාක්ෂි උඩුගත කරන්න (රූප, ශ්‍රව්‍ය, දෘශ්‍ය)"
+
+msgid "Upload supporting documentation, photos of damage, audio descriptions, or short video clips."
+msgstr "සහාය ලිපි ලේඛන, හානි ඡායාරූප, ශ්‍රව්‍ය විස්තර හෝ කෙටි දෘශ්‍ය ක්ලිප් උඩුගත කරන්න."
+
+msgid "Please select a category."
+msgstr "කරුණාකර කාණ්ඩයක් තෝරන්න."
+
+msgid "Please provide a subject."
+msgstr "කරුණාකර විෂයක් සඳහන් කරන්න."
+
+msgid "Please write a description of the issue."
+msgstr "කරුණාකර ගැටලුවේ විස්තරය ලියන්න."
+
+# --- Lodge Success ---
+msgid "Submission Successful!"
+msgstr "ඉදිරිපත් කිරීම සාර්ථකයි!"
+
+msgid "Submission Successful"
+msgstr "ඉදිරිපත් කිරීම සාර්ථකයි"
+
+msgid "Your complaint has been successfully recorded."
+msgstr "ඔබේ පැමිණිල්ල සාර්ථකව සටහන් කරන ලදී."
+
+msgid "Your complaint has been successfully recorded and assigned to the relevant local administration unit."
+msgstr "ඔබේ පැමිණිල්ල සාර්ථකව සටහන් කර අදාළ ස්ථානීය පාලන ඒකකයට පවරා ඇත."
+
+msgid "YOUR REFERENCE NUMBER"
+msgstr "ඔබේ යොමු අංකය"
+
+msgid "Please copy or save this reference code to track progress."
+msgstr "ගමන නිරීක්ෂණය කිරීමට මෙම යොමු කේතය පිටපත් කරන්න හෝ සුරකින්න."
+
+msgid "Track Progress Now"
+msgstr "දැන් ගමන නිරීක්ෂණය කරන්න"
+
+msgid "Return Home"
+msgstr "මුල් පිටුවට යන්න"
+
+# --- Track ---
+msgid "Track"
+msgstr "නිරීක්ෂණය"
+
+msgid "TRACK COMPLAINT"
+msgstr "පැමිණිල්ල නිරීක්ෂණය"
+
+msgid "Current Status:"
+msgstr "වත්මන් තත්ත්වය:"
+
+msgid "Pending"
+msgstr "බලා සිටිමින්"
+
+msgid "In Progress"
+msgstr "ක්‍රියාත්මකයි"
+
+msgid "Resolved"
+msgstr "නිරාකරණය කරන ලදී"
+
+msgid "Rejected"
+msgstr "ප්‍රතික්ෂේප කරන ලදී"
+
+msgid "Title / Subject"
+msgstr "මාතෘකාව / විෂය"
+
+msgid "Submitted On"
+msgstr "ඉදිරිපත් කළ දිනය"
+
+msgid "Location"
+msgstr "ස්ථානය"
+
+msgid "Description:"
+msgstr "විස්තරය:"
+
+msgid "Attached Evidence:"
+msgstr "ඇමුණුම් සාක්ෂි:"
+
+msgid "Your browser does not support the audio player."
+msgstr "ඔබේ බ්‍රවුසරය ශ්‍රව්‍ය ධාවකය සඳහා සහාය නොදක්වයි."
+
+msgid "Your browser does not support the video playback."
+msgstr "ඔබේ බ්‍රවුසරය වීඩියෝ ධාවනය සඳහා සහාය නොදක්වයි."
+
+msgid "Download File Attachment"
+msgstr "ගොනු ඇමුණුම බාගත කරන්න"
+
+msgid "Status Timeline"
+msgstr "තත්ත්ව කාලරේඛාව"
+
+msgid "No remarks or status updates recorded yet. The complaint is currently awaiting review."
+msgstr "තවම සටහන් හෝ තත්ත්ව යාවත්කාලීන කිරීම් සටහන් නොවේ. පැමිණිල්ල දැනට සමාලෝචනය සඳහා රැඳී සිටී."
+
+msgid "Status:"
+msgstr "තත්ත්වය:"
+
+msgid "Update by:"
+msgstr "යාවත්කාලීන කළේ:"
+
+msgid "Back to Homepage"
+msgstr "මුල් පිටුවට යන්න"
+
+# --- Login ---
+msgid "Login"
+msgstr "පිවිසීම"
+
+msgid "Officer Portal"
+msgstr "නිලධාරී ද්වාරය"
+
+msgid "Please authenticate to access your dashboard"
+msgstr "ඔබේ පාලක පුවරුවට ප්‍රවේශ වීමට සත්‍යාපනය කරන්න"
+
+msgid "Invalid username or password. Please try again."
+msgstr "අවලංගු පරිශීලක නාමය හෝ මුරපදය. නැවත උත්සාහ කරන්න."
+
+msgid "Username"
+msgstr "පරිශීලක නාමය"
+
+msgid "Enter username"
+msgstr "පරිශීලක නාමය ඇතුළත් කරන්න"
+
+msgid "Password"
+msgstr "මුරපදය"
+
+msgid "Enter password"
+msgstr "මුරපදය ඇතුළත් කරන්න"
+
+msgid "Please enter your username."
+msgstr "කරුණාකර ඔබේ පරිශීලක නාමය ඇතුළත් කරන්න."
+
+msgid "Please enter your password."
+msgstr "කරුණාකර ඔබේ මුරපදය ඇතුළත් කරන්න."
+
+msgid "Back to Citizen Homepage"
+msgstr "පුරවැසි මුල් පිටුවට යන්න"
