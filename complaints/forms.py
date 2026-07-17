@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 from .models import Complaint, ComplaintRemark, District, PradeshiyaSabha, Wasama
 
 class ComplaintForm(forms.ModelForm):
@@ -12,22 +13,22 @@ class ComplaintForm(forms.ModelForm):
         ]
         widgets = {
             'citizen_name': forms.TextInput(attrs={
-                'class': 'form-control glass-input', 'placeholder': 'Enter your full name'
+                'class': 'form-control glass-input', 'placeholder': _('Enter your full name')
             }),
             'citizen_email': forms.EmailInput(attrs={
-                'class': 'form-control glass-input', 'placeholder': 'name@example.com'
+                'class': 'form-control glass-input', 'placeholder': _('name@example.com')
             }),
             'citizen_phone': forms.TextInput(attrs={
-                'class': 'form-control glass-input', 'placeholder': 'e.g. 0771234567'
+                'class': 'form-control glass-input', 'placeholder': _('e.g. 0771234567')
             }),
             'category': forms.Select(attrs={
                 'class': 'form-select glass-input'
             }),
             'title': forms.TextInput(attrs={
-                'class': 'form-control glass-input', 'placeholder': 'Brief title of the complaint'
+                'class': 'form-control glass-input', 'placeholder': _('Brief title of the complaint')
             }),
             'description': forms.Textarea(attrs={
-                'class': 'form-control glass-input', 'rows': 4, 'placeholder': 'Provide a detailed description of the issue...'
+                'class': 'form-control glass-input', 'rows': 4, 'placeholder': _('Provide a detailed description of the issue...')
             }),
             'district': forms.Select(attrs={
                 'class': 'form-select glass-input', 'id': 'id_district'
@@ -71,7 +72,7 @@ class OfficerRemarkForm(forms.ModelForm):
     )
     remark = forms.CharField(
         widget=forms.Textarea(attrs={
-            'class': 'form-control modal-input', 'rows': 3, 'placeholder': 'Explain the reasoning for this status update...'
+            'class': 'form-control modal-input', 'rows': 3, 'placeholder': _('Explain the reasoning for this status update...')
         })
     )
 

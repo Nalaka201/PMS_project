@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}CCMS | Administrator Dashboard{% endblock %}
+{% block title %}CCMS | {% trans "Administrator Dashboard" %}{% endblock %}
 
 {% block content %}
 <div class="row align-items-center mb-5">
     <div class="col-md-8">
-        <h2 class="text-white mb-1"><i class="bi bi-shield-lock text-info me-2"></i>Administrator Dashboard</h2>
-        <p class="text-white-50 mb-0">System configuration, officer assignments, and global statistics</p>
+        <h2 class="text-white mb-1"><i class="bi bi-shield-lock text-info me-2"></i>{% trans "Administrator Dashboard" %}</h2>
+        <p class="text-white-50 mb-0">{% trans "System configuration, officer assignments, and global statistics" %}</p>
     </div>
 </div>
 
@@ -14,25 +15,25 @@
 <div class="row g-3 mb-5">
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Global Complaints</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Global Complaints" %}</span>
             <span class="display-6 fw-bold text-white">{{ total_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Awaiting Review</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Awaiting Review" %}</span>
             <span class="display-6 fw-bold text-warning">{{ pending_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">In Progress</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "In Progress" %}</span>
             <span class="display-6 fw-bold text-info">{{ progress_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Resolved Cases</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Resolved Cases" %}</span>
             <span class="display-6 fw-bold text-success">{{ resolved_count }}</span>
         </div>
     </div>
@@ -42,7 +43,7 @@
 <div class="row g-4 mb-5">
     <div class="col-md-6">
         <div class="glass-panel p-4">
-            <h5 class="mb-4 text-info"><i class="bi bi-pie-chart me-2"></i>Complaints by Category</h5>
+            <h5 class="mb-4 text-info"><i class="bi bi-pie-chart me-2"></i>{% trans "Complaints by Category" %}</h5>
             <div style="position: relative; height:250px;">
                 <canvas id="categoryChart"></canvas>
             </div>
@@ -50,7 +51,7 @@
     </div>
     <div class="col-md-6">
         <div class="glass-panel p-4">
-            <h5 class="mb-4 text-info"><i class="bi bi-bar-chart-line me-2"></i>Complaints by District</h5>
+            <h5 class="mb-4 text-info"><i class="bi bi-bar-chart-line me-2"></i>{% trans "Complaints by District" %}</h5>
             <div style="position: relative; height:250px;">
                 <canvas id="districtChart"></canvas>
             </div>
@@ -63,27 +64,27 @@
     <div class="col-lg-8">
         <div class="glass-panel p-4 h-100">
             <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="mb-0"><i class="bi bi-people me-2 text-info"></i>System Officers</h4>
+                <h4 class="mb-0"><i class="bi bi-people me-2 text-info"></i>{% trans "System Officers" %}</h4>
                 <button type="button" class="btn btn-premium btn-sm" data-bs-toggle="modal" data-bs-target="#createOfficerModal">
-                    <i class="bi bi-plus-circle me-1"></i> Add Officer
+                    <i class="bi bi-plus-circle me-1"></i> {% trans "Add Officer" %}
                 </button>
             </div>
             
             {% if not officers %}
                 <div class="text-center py-5 text-white-50">
                     <i class="bi bi-person-slash fs-2 d-block mb-3"></i>
-                    No officers registered in the system yet.
+                    {% trans "No officers registered in the system yet." %}
                 </div>
             {% else %}
                 <div class="table-responsive">
                     <table class="table table-hover table-glass align-middle mb-0">
                         <thead>
                             <tr>
-                                <th>Username</th>
-                                <th>Email</th>
-                                <th>Assigned District</th>
-                                <th>Assigned Sabha</th>
-                                <th>Assigned Wasama</th>
+                                <th>{% trans "Username" %}</th>
+                                <th>{% trans "Email" %}</th>
+                                <th>{% trans "Assigned District" %}</th>
+                                <th>{% trans "Assigned Sabha" %}</th>
+                                <th>{% trans "Assigned Wasama" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,9 +107,9 @@
     <!-- Recent Complaints Panel -->
     <div class="col-lg-4">
         <div class="glass-panel p-4 h-100">
-            <h4 class="mb-4"><i class="bi bi-clock-history me-2 text-info"></i>Recent Submissions</h4>
+            <h4 class="mb-4"><i class="bi bi-clock-history me-2 text-info"></i>{% trans "Recent Submissions" %}</h4>
             {% if not complaints %}
-                <div class="text-center py-5 text-white-50">No complaints logged yet.</div>
+                <div class="text-center py-5 text-white-50">{% trans "No complaints logged yet." %}</div>
             {% else %}
                 <div class="list-group list-group-flush bg-transparent">
                     {% for c in complaints %}
@@ -143,7 +144,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createOfficerModalLabel">Create New Officer Account</h5>
+                <h5 class="modal-title" id="createOfficerModalLabel">{% trans "Create New Officer Account" %}</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="POST" action="{% url 'admin_dashboard' %}" class="needs-validation" novalidate>
@@ -152,47 +153,47 @@
                 
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label class="form-label text-white-50">Username</label>
+                        <label class="form-label text-white-50">{% trans "Username" %}</label>
                         <input type="text" name="username" class="form-control modal-input" required>
-                        <div class="invalid-feedback">Please enter a username.</div>
+                        <div class="invalid-feedback">{% trans "Please enter a username." %}</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white-50">Email Address</label>
+                        <label class="form-label text-white-50">{% trans "Email Address" %}</label>
                         <input type="email" name="email" class="form-control modal-input" required>
-                        <div class="invalid-feedback">Please enter a valid email.</div>
+                        <div class="invalid-feedback">{% trans "Please enter a valid email." %}</div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white-50">Password</label>
+                        <label class="form-label text-white-50">{% trans "Password" %}</label>
                         <input type="password" name="password" class="form-control modal-input" required>
-                        <div class="invalid-feedback">Please enter a password.</div>
+                        <div class="invalid-feedback">{% trans "Please enter a password." %}</div>
                     </div>
                     
-                    <h6 class="border-top border-secondary pt-3 mt-4 mb-3 text-info">Jurisdiction Scope Assignment</h6>
+                    <h6 class="border-top border-secondary pt-3 mt-4 mb-3 text-info">{% trans "Jurisdiction Scope Assignment" %}</h6>
                     <div class="mb-3">
-                        <label class="form-label text-white-50">District</label>
+                        <label class="form-label text-white-50">{% trans "District" %}</label>
                         <select name="district" id="id_admin_district" class="form-select modal-input">
-                            <option value="">-- Global / No Assignment --</option>
+                            <option value="">{% trans "-- Global / No Assignment --" %}</option>
                             {% for d in districts %}
                                 <option value="{{ d.id }}">{{ d.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white-50">Pradeshiya Sabha</label>
+                        <label class="form-label text-white-50">{% trans "Pradeshiya Sabha" %}</label>
                         <select name="sabha" id="id_admin_sabha" class="form-select modal-input" disabled>
-                            <option value="">-- Select Pradeshiya Sabha --</option>
+                            <option value="">{% trans "-- Select Pradeshiya Sabha --" %}</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label text-white-50">Wasama / GN Division</label>
+                        <label class="form-label text-white-50">{% trans "Wasama / GN Division" %}</label>
                         <select name="wasama" id="id_admin_wasama" class="form-select modal-input" disabled>
-                            <option value="">-- Select Wasama --</option>
+                            <option value="">{% trans "-- Select Wasama --" %}</option>
                         </select>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-glass" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-premium">Register Officer</button>
+                    <button type="button" class="btn btn-glass" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                    <button type="submit" class="btn btn-premium">{% trans "Register Officer" %}</button>
                 </div>
             </form>
         </div>

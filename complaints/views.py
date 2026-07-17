@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.db.models import Count, Q
 from django.contrib import messages
 from django.utils import timezone
+from django.utils.translation import gettext as _
 from .models import District, PradeshiyaSabha, Wasama, OfficerProfile, Complaint, ComplaintRemark
 from .forms import ComplaintForm, OfficerRemarkForm
 
@@ -17,7 +18,7 @@ def index(request):
             if Complaint.objects.filter(reference_number=ref).exists():
                 return redirect('track_complaint', ref_num=ref)
             else:
-                messages.error(request, f"No complaint found with Reference Number '{ref}'. Please check and try again.")
+                messages.error(request, _("No complaint found with Reference Number '%(ref)s'. Please check and try again.") % {'ref': ref})
     return render(request, 'index.html')
 
 def lodge_complaint(request):
@@ -25,10 +26,10 @@ def lodge_complaint(request):
         form = ComplaintForm(request.POST, request.FILES)
         if form.is_valid():
             complaint = form.save()
-            messages.success(request, f"Complaint submitted successfully! Your Reference Number is {complaint.reference_number}.")
+            messages.success(request, _("Complaint submitted successfully! Your Reference Number is %(reference)s.") % {'reference': complaint.reference_number})
             return render(request, 'lodge_success.html', {'complaint': complaint})
         else:
-            messages.error(request, "There was an error submitting your complaint. Please correct the fields below.")
+            messages.error(request, _('There was an error submitting your complaint. Please correct the fields below.'))
     else:
         form = ComplaintForm()
     
@@ -74,15 +75,15 @@ def officer_dashboard(request):
     
     if profile.assigned_wasama:
         complaints = complaints.filter(wasama=profile.assigned_wasama)
-        scope_title = f"Wasama: {profile.assigned_wasama.name}"
+        scope_title = _('Wasama: %(name)s') % {'name': profile.assigned_wasama.name}
     elif profile.assigned_pradeshiya_sabha:
         complaints = complaints.filter(pradeshiya_sabha=profile.assigned_pradeshiya_sabha)
-        scope_title = f"Sabha: {profile.assigned_pradeshiya_sabha.name}"
+        scope_title = _('Sabha: %(name)s') % {'name': profile.assigned_pradeshiya_sabha.name}
     elif profile.assigned_district:
         complaints = complaints.filter(district=profile.assigned_district)
-        scope_title = f"District: {profile.assigned_district.name}"
+        scope_title = _('District: %(name)s') % {'name': profile.assigned_district.name}
     else:
-        scope_title = "All Administrative Jurisdictions (Global)"
+        scope_title = _('All Administrative Jurisdictions (Global)')
 
     # Dashboard metrics for this officer's scope
     total_count = complaints.count()
@@ -132,7 +133,7 @@ def admin_dashboard(request):
     # Verify user is Admin
     profile = get_object_or_404(OfficerProfile, user=request.user)
     if profile.role != 'ADMIN':
-        messages.error(request, "Access denied. You do not have administrator privileges.")
+        messages.error(request, _('Access denied. You do not have administrator privileges.'))
         return redirect('officer_dashboard')
 
     # Global complaints list
@@ -177,7 +178,7 @@ def admin_dashboard(request):
 
             if username and password:
                 if User.objects.filter(username=username).exists():
-                    messages.error(request, f"Username '{username}' already exists.")
+                    messages.error(request, _('Username "%(username)s" already exists.') % {'username': username})
                 else:
                     new_user = User.objects.create_user(username=username, email=email, password=password)
                     profile = OfficerProfile.objects.create(
@@ -187,9 +188,9 @@ def admin_dashboard(request):
                         assigned_pradeshiya_sabha_id=int(sabha_id) if sabha_id else None,
                         assigned_wasama_id=int(wasama_id) if wasama_id else None
                     )
-                    messages.success(request, f"Officer '{username}' created successfully!")
+                    messages.success(request, _('Officer "%(username)s" created successfully!') % {'username': username})
             else:
-                messages.error(request, "Username and password are required.")
+                messages.error(request, _('Username and password are required.'))
             return redirect('admin_dashboard')
 
     districts = District.objects.all()
@@ -230,7 +231,7 @@ def update_complaint_status(request, complaint_id):
             is_authorized = True
 
         if not is_authorized:
-            messages.error(request, "You are not authorized to update this complaint (outside your jurisdiction).")
+            messages.error(request, _('You are not authorized to update this complaint (outside your jurisdiction).'))
             return redirect('dashboard_router')
 
         status_to = request.POST.get('status')
@@ -245,12 +246,12 @@ def update_complaint_status(request, complaint_id):
             ComplaintRemark.objects.create(
                 complaint=complaint,
                 officer=request.user,
-                remark=remark_text or f"Status updated to {complaint.get_status_display()}.",
+                remark=remark_text or _('Status updated to %(status)s.') % {'status': complaint.get_status_display()},
                 status_from=status_from,
                 status_to=status_to
             )
-            messages.success(request, f"Complaint {complaint.reference_number} updated successfully!")
+            messages.success(request, _('Complaint %(reference)s updated successfully!') % {'reference': complaint.reference_number})
         else:
-            messages.error(request, "Invalid status selected.")
+            messages.error(request, _('Invalid status selected.'))
             
     return redirect('dashboard_router')

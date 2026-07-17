@@ -283,3 +283,202 @@ msgstr "කරුණාකර ඔබේ මුරපදය ඇතුළත් �
 
 msgid "Back to Citizen Homepage"
 msgstr "පුරවැසි මුල් පිටුවට යන්න"
+
+# --- Dashboard / Admin / Officer UI ---
+msgid "Welcome"
+msgstr "සාදරයෙන් පිළිගනිමු"
+
+msgid "Assigned Scope"
+msgstr "පවරා ඇති පරාසය"
+
+msgid "Filter Complaints"
+msgstr "පැමිණිලි පෙරනය කරන්න"
+
+msgid "Search Query"
+msgstr "සෙවුම් පදය"
+
+msgid "Search Reference, Title, Citizen..."
+msgstr "යොමු අංකය, මාතෘකාව, පුරවැසි වැනි සෙවීම..."
+
+msgid "Apply"
+msgstr "යොදන්න"
+
+msgid "Assigned Public Complaints"
+msgstr "පවරා ඇති පොදු පැමිණිලි"
+
+msgid "No complaints found matching the filters or scope."
+msgstr "පෙරහන් හෝ පරාසයට ගැළපෙන පැමිණිලි නොමැත."
+
+msgid "Ref Number"
+msgstr "යොමු අංකය"
+
+msgid "Date Submitted"
+msgstr "ඉදිරිපත් කළ දිනය"
+
+msgid "Complaint Subject"
+msgstr "පැමිණිලි මාතෘකාව"
+
+msgid "Citizen"
+msgstr "පුරවැසි"
+
+msgid "Action"
+msgstr "ක්‍රියාව"
+
+msgid "Review"
+msgstr "සමාලෝචනය කරන්න"
+
+msgid "CITIZEN DETAIL"
+msgstr "පුරවැසි විස්තර"
+
+msgid "LOCATION / WASAMA"
+msgstr "ස්ථානය / වසම"
+
+msgid "COMPLAINT SUBJECT"
+msgstr "පැමිණිලි මාතෘකාව"
+
+msgid "DESCRIPTION"
+msgstr "විස්තරය"
+
+msgid "ATTACHED EVIDENCE"
+msgstr "ඇමුණුම් සාක්ෂි"
+
+msgid "Download Evidence File"
+msgstr "සාක්ෂි ගොනුව බාගන්න"
+
+msgid "Update Progress"
+msgstr "ප්‍රගතිය යාවත්කාලීන කරන්න"
+
+msgid "Select Status"
+msgstr "තත්ත්වය තෝරන්න"
+
+msgid "Action Remark / Explanation"
+msgstr "ක්‍රියා විස්තර / පැහැදිලි කිරීම"
+
+msgid "Describe the action taken or reasoning for status update..."
+msgstr "තත්ත්වය යාවත්කාලීන කිරීම සඳහා ගත් ක්‍රියාව හෝ තර්කය විස්තර කරන්න..."
+
+msgid "Close"
+msgstr "වසා දමන්න"
+
+msgid "Submit Update"
+msgstr "යාවත්කාලීන කිරීම ඉදිරිපත් කරන්න"
+
+msgid "Administrator Dashboard"
+msgstr "පරිපාලක පුවරුව"
+
+msgid "System configuration, officer assignments, and global statistics"
+msgstr "පද්ධති සැකසුම්, නිලධාරී පැවරණ සහ සම්පූර්ණ සංඛ්‍යාලේඛන"
+
+msgid "Global Complaints"
+msgstr "සම්පූර්ණ පැමිණිලි"
+
+msgid "Awaiting Review"
+msgstr "සමාලෝචනය සඳහා රැඳී සිටිනවා"
+
+msgid "Resolved Cases"
+msgstr "නිරාකරණය වූ නඩු"
+
+msgid "Complaints by Category"
+msgstr "කාණ්ඩ අනුව පැමිණිලි"
+
+msgid "Complaints by District"
+msgstr "දිස්ත්‍රික්ක අනුව පැමිණිලි"
+
+msgid "System Officers"
+msgstr "පද්ධති නිලධාරීන්"
+
+msgid "Add Officer"
+msgstr "නිලධාරියක් එක් කරන්න"
+
+msgid "No officers registered in the system yet."
+msgstr "තවම පද්ධතියට නිලධාරීන් ලියාපදිංචි නොවී ඇත."
+
+msgid "Email"
+msgstr "ඊ-තැපෑල"
+
+msgid "Assigned District"
+msgstr "පවරා ඇති දිස්ත්‍රික්කය"
+
+msgid "Assigned Sabha"
+msgstr "පවරා ඇති සභාව"
+
+msgid "Assigned Wasama"
+msgstr "පවරා ඇති වසම"
+
+msgid "Recent Submissions"
+msgstr "මෑත ඉදිරිපත් කිරීම්"
+
+msgid "No complaints logged yet."
+msgstr "තවම පැමිණිලි ලියාපදිංචි නොවී ඇත."
+
+msgid "Create New Officer Account"
+msgstr "නව නිලධාරී ගිණුමක් සාදන්න"
+
+msgid "Please enter a username."
+msgstr "කරුණාකර පරිශීලක නාමයක් ඇතුළත් කරන්න."
+
+msgid "Please enter a valid email."
+msgstr "කරුණාකර වලංගු ඊ-තැපෑලක් ඇතුළත් කරන්න."
+
+msgid "Please enter a password."
+msgstr "කරුණාකර මුරපදයක් ඇතුළත් කරන්න."
+
+msgid "Jurisdiction Scope Assignment"
+msgstr "පරාසය පවරාදීම"
+
+msgid "-- Global / No Assignment --"
+msgstr "-- සම්පූර්ණ / පැවරුමක් නොමැත --"
+
+msgid "-- Select Pradeshiya Sabha --"
+msgstr "-- ප්‍රාදේශීය සභාවක් තෝරන්න --"
+
+msgid "-- Select Wasama --"
+msgstr "-- වසමක් තෝරන්න --"
+
+msgid "Register Officer"
+msgstr "නිලධාරියෙක් ලියාපදිංචි කරන්න"
+
+msgid "No complaint found with Reference Number '%(ref)s'. Please check and try again."
+msgstr "යොමු අංකය '%(ref)s' සහිත පැමිණිල්ලක් හමු නොවීය. කරුණාකර නැවත පරීක්ෂා කරන්න."
+
+msgid "Complaint submitted successfully! Your Reference Number is %(reference)s."
+msgstr "පැමිණිල්ල සාර්ථකව ඉදිරිපත් කරන ලදී! ඔබේ යොමු අංකය %(reference)s වේ."
+
+msgid "There was an error submitting your complaint. Please correct the fields below."
+msgstr "ඔබේ පැමිණිල්ල ඉදිරිපත් කිරීමේදී දෝෂයක් ඇති විය. කරුණාකර පහත ක්ෂේත්‍ර නිවැරදි කරන්න."
+
+msgid "Wasama: %(name)s"
+msgstr "වසම: %(name)s"
+
+msgid "Sabha: %(name)s"
+msgstr "සභාව: %(name)s"
+
+msgid "District: %(name)s"
+msgstr "දිස්ත්‍රික්කය: %(name)s"
+
+msgid "All Administrative Jurisdictions (Global)"
+msgstr "සියලු පරිපාලන බලපත්‍ර (සම්පූර්ණ)"
+
+msgid "Access denied. You do not have administrator privileges."
+msgstr "ප්‍රවේශය අවහිරයි. ඔබට පරිපාලක අයිතිවාසිකම් නොමැත."
+
+msgid "Username \"%(username)s\" already exists."
+msgstr "පරිශීලක නාමය \"%(username)s\" දැනටමත් පවතී."
+
+msgid "Officer \"%(username)s\" created successfully!"
+msgstr "නිලධාරියා \"%(username)s\" සාර්ථකව නිර්මාණය කරන ලදී!"
+
+msgid "Username and password are required."
+msgstr "පරිශීලක නාමය සහ මුරපදය අවශ්‍ය වේ."
+
+msgid "You are not authorized to update this complaint (outside your jurisdiction)."
+msgstr "මෙම පැමිණිල්ල යාවත්කාලීන කිරීමට ඔබට අවසර නැත (ඔබේ බලපත්‍රයෙන් පිට)."
+
+msgid "Status updated to %(status)s."
+msgstr "තත්ත්වය %(status)s ලෙස යාවත්කාලීන කරන ලදී."
+
+msgid "Complaint %(reference)s updated successfully!"
+msgstr "පැමිණිල්ල %(reference)s සාර්ථකව යාවත්කාලීන කරන ලදී!"
+
+msgid "Invalid status selected."
+msgstr "අවලංගු තත්ත්වයක් තෝරාගෙන ඇත."

@@ -1,0 +1,484 @@
+# Tamil (ta) Translations for CCMS
+# Generated for the Citizen Complaint Management System
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ta\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# --- Navbar ---
+msgid "Home"
+msgstr "முகப்பு"
+
+msgid "Lodge Complaint"
+msgstr "புகார் தாக்கல் செய்யவும்"
+
+msgid "Track Status"
+msgstr "நிலையைப் பின்தொடரவும்"
+
+msgid "Officer Login"
+msgstr "அதிகாரி உள்நுழைவு"
+
+msgid "Dashboard"
+msgstr "கட்டுப்பாட்டு பலகை"
+
+msgid "Logout"
+msgstr "வெளியேறு"
+
+msgid "Citizen Complaint Management System"
+msgstr "பொது மக்களின் புகார் மேலாண்மை முறை"
+
+msgid "All Rights Reserved."
+msgstr "எல்லா உரிமைகளும் பாதுகாக்கப்பட்டவை."
+
+# --- Homepage ---
+msgid "Modernizing Public Service"
+msgstr "பொது சேவையை நவீனமயமாக்குதல்"
+
+msgid "Complaint Management"
+msgstr "புகார் மேலாண்மை"
+
+msgid "Submit public concerns online directly to your local Grama Niladhari division or Pradeshiya Sabha. Track progress transparently from reporting to resolution."
+msgstr "உங்கள் உள்ளூர் கிராம நிவாரணப் பிரிவு அல்லது பிரதேச செயலாளர் மன்றத்திற்கு உங்கள் புகார்களை நேரடியாக ஆன்லைனில் சமர்ப்பிக்கவும். அறிக்கை முதல் தீர்வு வரை முன்னேற்றத்தைக் கண்காணிக்கவும்."
+
+msgid "Submit Complaint"
+msgstr "புகார் சமர்ப்பிக்கவும்"
+
+msgid "Track Complaint"
+msgstr "புகாரைப் பின்தொடரவும்"
+
+msgid "Common Categories"
+msgstr "பொதுவான வகைகள்"
+
+msgid "Road Damage"
+msgstr "சாலை சேதம்"
+
+msgid "Waste Management"
+msgstr "கழிவு மேலாண்மை"
+
+msgid "Drainage Issues"
+msgstr "நீர் வடிகால் பிரச்சினைகள்"
+
+msgid "Street Lighting"
+msgstr "தெரு விளக்குகள்"
+
+msgid "Environmental Concerns"
+msgstr "சுற்றுச்சூழல் கவலைகள்"
+
+msgid "Public Services"
+msgstr "பொது சேவைகள்"
+
+msgid "Other"
+msgstr "மற்றவை"
+
+msgid "Track Your Complaint"
+msgstr "உங்கள் புகாரைப் பின்தொடரவும்"
+
+msgid "Enter your unique complaint reference number (e.g."
+msgstr "உங்கள் தனிப்பட்ட புகார் குறிப்பு எண்ணை உள்ளிடவும் (உ.மா."
+
+msgid "below to view real-time status and officer remarks."
+msgstr "நேரடி நிலை மற்றும் அதிகாரி குறிப்புகளைப் பார்க்க கீழே உள்ளிடவும்."
+
+msgid "Search"
+msgstr "தேடவும்"
+
+msgid "Please provide a valid reference number."
+msgstr "தயவுசெய்து செல்லுபடியாகும் குறிப்பு எண்ணை வழங்கவும்."
+
+# --- Lodge Complaint Form ---
+msgid "Submit a New Complaint"
+msgstr "புதிய புகாரை சமர்ப்பிக்கவும்"
+
+msgid "Please fill out all the details accurately. Our officers will review your complaint based on the selected administrative boundary."
+msgstr "தயவுசெய்து அனைத்து விவரங்களையும் துல்லியமாக நிரப்பவும். உங்கள் தேர்ந்தெடுத்த நிர்வாக எல்லைக்கு ஏற்ப எங்கள் அதிகாரிகள் உங்கள் புகாரை மதிப்பாய்வு செய்வார்கள்."
+
+msgid "Personal Information"
+msgstr "தனிப்பட்ட தகவல்"
+
+msgid "Your Name"
+msgstr "உங்கள் பெயர்"
+
+msgid "Contact Phone Number"
+msgstr "தொடர்பு தொலைபேசி எண்"
+
+msgid "Email Address"
+msgstr "மின்னஞ்சல் முகவரி"
+
+msgid "Please enter your name."
+msgstr "தயவுசெய்து உங்கள் பெயரை உள்ளிடவும்."
+
+msgid "Please enter your phone number."
+msgstr "தயவுசெய்து உங்கள் தொலைபேசி எண்ணை உள்ளிடவும்."
+
+msgid "Please enter a valid email address."
+msgstr "தயவுசெய்து செல்லுபடியாகும் மின்னஞ்சல் முகவரியை உள்ளிடவும்."
+
+msgid "Jurisdiction / Location"
+msgstr "அதிகாரம் / இருப்பிடம்"
+
+msgid "District"
+msgstr "மாவட்டம்"
+
+msgid "Pradeshiya Sabha"
+msgstr "பிரதேச செயலாளர் மன்றம்"
+
+msgid "Wasama / GN Division"
+msgstr "வசம / ஜிஎன் பிரிவு"
+
+msgid "Please select a District."
+msgstr "தயவுசெய்து ஒரு மாவட்டத்தைத் தேர்ந்தெடுக்கவும்."
+
+msgid "Please select a Pradeshiya Sabha."
+msgstr "தயவுசெய்து ஒரு பிரதேச செயலாளர் மன்றத்தைத் தேர்ந்தெடுக்கவும்."
+
+msgid "Please select a Wasama."
+msgstr "தயவுசெய்து ஒரு வசமாவைத் தேர்ந்தெடுக்கவும்."
+
+msgid "Complaint Details"
+msgstr "புகார் விவரங்கள்"
+
+msgid "Complaint Category"
+msgstr "புகார் வகை"
+
+msgid "Subject / Title"
+msgstr "தலைப்பு"
+
+msgid "Detailed Description"
+msgstr "விவரிக்கப்பட்ட விளக்கம்"
+
+msgid "Upload Evidence (Images, Audio, Video)"
+msgstr "சான்றுகளை பதிவேற்றவும் (படங்கள், ஒலி, காணொளி)"
+
+msgid "Upload supporting documentation, photos of damage, audio descriptions, or short video clips."
+msgstr "ஆதரவு ஆவணங்கள், சேதப் படங்கள், ஒலி விளக்கங்கள் அல்லது குறுந்தொகுப்பு காணொளிகளை பதிவேற்றவும்."
+
+msgid "Please select a category."
+msgstr "தயவுசெய்து ஒரு வகையைத் தேர்ந்தெடுக்கவும்."
+
+msgid "Please provide a subject."
+msgstr "தயவுசெய்து ஒரு தலைப்பை வழங்கவும்."
+
+msgid "Please write a description of the issue."
+msgstr "தயவுசெய்து பிரச்சினையின் விளக்கத்தை எழுதவும்."
+
+# --- Lodge Success ---
+msgid "Submission Successful!"
+msgstr "சமர்ப்பிப்பு வெற்றிகரமாகும்!"
+
+msgid "Submission Successful"
+msgstr "சமர்ப்பிப்பு வெற்றிகரமாகும்"
+
+msgid "Your complaint has been successfully recorded."
+msgstr "உங்கள் புகார் வெற்றிகரமாக பதிவு செய்யப்பட்டது."
+
+msgid "Your complaint has been successfully recorded and assigned to the relevant local administration unit."
+msgstr "உங்கள் புகார் வெற்றிகரமாக பதிவு செய்யப்பட்டு தொடர்புடைய உள்ளூர் நிர்வாகப் பிரிவுக்கு ஒதுக்கப்பட்டது."
+
+msgid "YOUR REFERENCE NUMBER"
+msgstr "உங்கள் குறிப்பு எண்"
+
+msgid "Please copy or save this reference code to track progress."
+msgstr "முன்னேற்றத்தைப் பின்தொடர இந்த குறிப்பு எண்ணை நகலெடுத்து சேமிக்கவும்."
+
+msgid "Track Progress Now"
+msgstr "இப்போது முன்னேற்றத்தைப் பின்தொடரவும்"
+
+msgid "Return Home"
+msgstr "முகப்புக்குத் திரும்பவும்"
+
+# --- Track ---
+msgid "Track"
+msgstr "பின்தொடரவும்"
+
+msgid "TRACK COMPLAINT"
+msgstr "புகாரைப் பின்தொடரவும்"
+
+msgid "Current Status:"
+msgstr "தற்போதைய நிலை:"
+
+msgid "Pending"
+msgstr "நிலுவையில்"
+
+msgid "In Progress"
+msgstr "செயல்பாட்டில்"
+
+msgid "Resolved"
+msgstr "தீர்க்கப்பட்டது"
+
+msgid "Rejected"
+msgstr "நிராகரிக்கப்பட்டது"
+
+msgid "Title / Subject"
+msgstr "தலைப்பு / பொருள்"
+
+msgid "Submitted On"
+msgstr "சமர்ப்பிக்கப்பட்ட தேதி"
+
+msgid "Location"
+msgstr "இடம்"
+
+msgid "Description:"
+msgstr "விளக்கம்:"
+
+msgid "Attached Evidence:"
+msgstr "இணைக்கப்பட்ட சான்று:"
+
+msgid "Your browser does not support the audio player."
+msgstr "உங்கள் உலாவி ஒலி இயக்கியை ஆதரிக்கவில்லை."
+
+msgid "Your browser does not support the video playback."
+msgstr "உங்கள் உலாவி காணொளி இயக்கத்தை ஆதரிக்கவில்லை."
+
+msgid "Download File Attachment"
+msgstr "கோப்பு இணைப்பைப் பதிவிறக்கவும்"
+
+msgid "Status Timeline"
+msgstr "நிலை காலவரிசை"
+
+msgid "No remarks or status updates recorded yet. The complaint is currently awaiting review."
+msgstr "இதுவரை எந்தக் குறிப்புகளும் நிலை மாற்றங்களும் பதிவு செய்யப்படவில்லை. புகார் தற்போது மதிப்பாய்வுக்காக காத்திருக்கிறது."
+
+msgid "Status:"
+msgstr "நிலை:"
+
+msgid "Update by:"
+msgstr "இவர் மூலம் புதுப்பிக்கப்பட்டது:"
+
+msgid "Back to Homepage"
+msgstr "முகப்புக்குத் திரும்பவும்"
+
+# --- Login ---
+msgid "Login"
+msgstr "உள்நுழைவு"
+
+msgid "Officer Portal"
+msgstr "அதிகாரி போர்ட்டல்"
+
+msgid "Please authenticate to access your dashboard"
+msgstr "உங்கள் கட்டுப்பாட்டு பலகையை அணுக உள்நுழையவும்"
+
+msgid "Invalid username or password. Please try again."
+msgstr "செல்லாது பெயர் அல்லது கடவுச்சொல். மீண்டும் முயற்சிக்கவும்."
+
+msgid "Username"
+msgstr "பயனாளர் பெயர்"
+
+msgid "Enter username"
+msgstr "பயனாளர் பெயரை உள்ளிடவும்"
+
+msgid "Password"
+msgstr "கடவுச்சொல்"
+
+msgid "Enter password"
+msgstr "கடவுச்சொல்லை உள்ளிடவும்"
+
+msgid "Please enter your username."
+msgstr "தயவுசெய்து உங்கள் பயனாளர் பெயரை உள்ளிடவும்."
+
+msgid "Please enter your password."
+msgstr "தயவுசெய்து உங்கள் கடவுச்சொல்லை உள்ளிடவும்."
+
+msgid "Back to Citizen Homepage"
+msgstr "பொது முகப்புக்குத் திரும்பவும்"
+
+# --- Dashboard / Admin / Officer UI ---
+msgid "Welcome"
+msgstr "வரவேற்கிறோம்"
+
+msgid "Assigned Scope"
+msgstr "ஒதுக்கப்பட்ட எல்லை"
+
+msgid "Filter Complaints"
+msgstr "புகார்களை வடிகட்டவும்"
+
+msgid "Search Query"
+msgstr "தேடல் வாக்கியம்"
+
+msgid "Search Reference, Title, Citizen..."
+msgstr "குறிப்பு எண், தலைப்பு, குடிமகன்... என தேடவும்"
+
+msgid "Apply"
+msgstr "சமர்ப்பிக்கவும்"
+
+msgid "Assigned Public Complaints"
+msgstr "ஒதுக்கப்பட்ட பொது புகார்கள்"
+
+msgid "No complaints found matching the filters or scope."
+msgstr "வடிகட்டல்கள் அல்லது எல்லைக்கு பொருந்தும் புகார்கள் எதுவும் இல்லை."
+
+msgid "Ref Number"
+msgstr "குறிப்பு எண்"
+
+msgid "Date Submitted"
+msgstr "சமர்ப்பிக்கப்பட்ட தேதி"
+
+msgid "Complaint Subject"
+msgstr "புகார் தலைப்பு"
+
+msgid "Citizen"
+msgstr "குடிமகன்"
+
+msgid "Action"
+msgstr "செயல்"
+
+msgid "Review"
+msgstr "மதிப்பாய்வு"
+
+msgid "CITIZEN DETAIL"
+msgstr "குடிமகன் விவரம்"
+
+msgid "LOCATION / WASAMA"
+msgstr "இடம் / வசம"
+
+msgid "COMPLAINT SUBJECT"
+msgstr "புகார் தலைப்பு"
+
+msgid "DESCRIPTION"
+msgstr "விளக்கம்"
+
+msgid "ATTACHED EVIDENCE"
+msgstr "இணைக்கப்பட்ட சான்றுகள்"
+
+msgid "Download Evidence File"
+msgstr "சான்று கோப்பைப் பதிவிறக்கவும்"
+
+msgid "Update Progress"
+msgstr "முன்னேற்றத்தைப் புதுப்பிக்கவும்"
+
+msgid "Select Status"
+msgstr "நிலையைத் தேர்ந்தெடுக்கவும்"
+
+msgid "Action Remark / Explanation"
+msgstr "செயல் குறிப்பு / விளக்கம்"
+
+msgid "Describe the action taken or reasoning for status update..."
+msgstr "நிலை மாற்றத்திற்கான நடவடிக்கை அல்லது காரணத்தை விவரிக்கவும்..."
+
+msgid "Close"
+msgstr "மூடு"
+
+msgid "Submit Update"
+msgstr "புதுப்பிப்பை சமர்ப்பிக்கவும்"
+
+msgid "Administrator Dashboard"
+msgstr "நிர்வாகி முகப்பு பலகை"
+
+msgid "System configuration, officer assignments, and global statistics"
+msgstr "திட்ட அமைப்பு, அதிகாரி ஒதுக்கீடுகள் மற்றும் உலகளாவிய புள்ளிவிவரங்கள்"
+
+msgid "Global Complaints"
+msgstr "மொத்த புகார்கள்"
+
+msgid "Awaiting Review"
+msgstr "மதிப்பாய்வுக்காக காத்திருப்பு"
+
+msgid "Resolved Cases"
+msgstr "தீர்க்கப்பட்ட வழக்குகள்"
+
+msgid "Complaints by Category"
+msgstr "வகை வாரியாக புகார்கள்"
+
+msgid "Complaints by District"
+msgstr "மாவட்ட வாரியாக புகார்கள்"
+
+msgid "System Officers"
+msgstr "திட்ட அதிகாரிகள்"
+
+msgid "Add Officer"
+msgstr "அதிகாரியைச் சேர்க்கவும்"
+
+msgid "No officers registered in the system yet."
+msgstr "இதுவரை எந்த அதிகாரியும் பதிவுசெய்யப்படவில்லை."
+
+msgid "Email"
+msgstr "மின்னஞ்சல்"
+
+msgid "Assigned District"
+msgstr "ஒதுக்கப்பட்ட மாவட்டம்"
+
+msgid "Assigned Sabha"
+msgstr "ஒதுக்கப்பட்ட சபை"
+
+msgid "Assigned Wasama"
+msgstr "ஒதுக்கப்பட்ட வசம"
+
+msgid "Recent Submissions"
+msgstr "சமீபத்திய சமர்ப்பிப்புகள்"
+
+msgid "No complaints logged yet."
+msgstr "இதுவரை எந்த புகாரும் பதிவு செய்யப்படவில்லை."
+
+msgid "Create New Officer Account"
+msgstr "புதிய அதிகாரி கணக்கை உருவாக்கவும்"
+
+msgid "Please enter a username."
+msgstr "தயவுசெய்து பயனாளர் பெயரை உள்ளிடவும்."
+
+msgid "Please enter a valid email."
+msgstr "தயவுசெய்து செல்லுபடியாகும் மின்னஞ்சலை உள்ளிடவும்."
+
+msgid "Please enter a password."
+msgstr "தயவுசெய்து கடவுச்சொல்லை உள்ளிடவும்."
+
+msgid "Jurisdiction Scope Assignment"
+msgstr "அதிகார எல்லை ஒதுக்கீடு"
+
+msgid "-- Global / No Assignment --"
+msgstr "-- பொது / ஒதுக்கீடு இல்லை --"
+
+msgid "-- Select Pradeshiya Sabha --"
+msgstr "-- பிரதேச சபையைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "-- Select Wasama --"
+msgstr "-- வசமாவைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "Register Officer"
+msgstr "அதிகாரியைப் பதிவு செய்யவும்"
+
+msgid "No complaint found with Reference Number '%(ref)s'. Please check and try again."
+msgstr "குறிப்பு எண் '%(ref)s' கொண்ட புகார் எதுவும் கண்டறியப்படவில்லை. தயவுசெய்து மீண்டும் சரிபார்க்கவும்."
+
+msgid "Complaint submitted successfully! Your Reference Number is %(reference)s."
+msgstr "புகார் வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது! உங்கள் குறிப்பு எண் %(reference)s ஆகும்."
+
+msgid "There was an error submitting your complaint. Please correct the fields below."
+msgstr "உங்கள் புகாரை சமர்ப்பிப்பதில் பிழை ஏற்பட்டது. கீழே உள்ள புலங்களைச் சரிசெய்யவும்."
+
+msgid "Wasama: %(name)s"
+msgstr "வசம: %(name)s"
+
+msgid "Sabha: %(name)s"
+msgstr "சபை: %(name)s"
+
+msgid "District: %(name)s"
+msgstr "மாவட்டம்: %(name)s"
+
+msgid "All Administrative Jurisdictions (Global)"
+msgstr "எல்லா நிர்வாக எல்லைகளும் (பொது)"
+
+msgid "Access denied. You do not have administrator privileges."
+msgstr "அணுகல் மறுக்கப்பட்டது. உங்களுக்கு நிர்வாகி உரிமைகள் இல்லை."
+
+msgid "Username \"%(username)s\" already exists."
+msgstr "பயனாளர் பெயர் \"%(username)s\" ஏற்கனவே உள்ளது."
+
+msgid "Officer \"%(username)s\" created successfully!"
+msgstr "அதிகாரி \"%(username)s\" வெற்றிகரமாக உருவாக்கப்பட்டார்!"
+
+msgid "Username and password are required."
+msgstr "பயனாளர் பெயரையும் கடவுச்சொல்லையும் வழங்க வேண்டும்."
+
+msgid "You are not authorized to update this complaint (outside your jurisdiction)."
+msgstr "இந்த புகாரை புதுப்பிக்க உங்களுக்கு அனுமதி இல்லை (உங்கள் அதிகார எல்லைக்கு வெளியே)."
+
+msgid "Status updated to %(status)s."
+msgstr "நிலை %(status)s ஆக புதுப்பிக்கப்பட்டது."
+
+msgid "Complaint %(reference)s updated successfully!"
+msgstr "புகார் %(reference)s வெற்றிகரமாக புதுப்பிக்கப்பட்டது!"
+
+msgid "Invalid status selected."
+msgstr "செல்லாத நிலை தேர்ந்தெடுக்கப்பட்டது."

@@ -1,15 +1,16 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
-{% block title %}CCMS | Officer Dashboard{% endblock %}
+{% block title %}CCMS | {% trans "Officer Dashboard" %}{% endblock %}
 
 {% block content %}
 <!-- Dashboard Welcome Header -->
 <div class="row align-items-center mb-5">
     <div class="col-md-8">
-        <h2 class="text-white mb-1"><i class="bi bi-speedometer2 text-info me-2"></i>Officer Dashboard</h2>
+        <h2 class="text-white mb-1"><i class="bi bi-speedometer2 text-info me-2"></i>{% trans "Officer Dashboard" %}</h2>
         <p class="text-white-50 mb-0">
-            Welcome, <strong class="text-white">{{ profile.user.username }}</strong>. 
-            Assigned Scope: <span class="badge bg-secondary px-2 py-1">{{ scope_title }}</span>
+            {% trans "Welcome" %}, <strong class="text-white">{{ profile.user.username }}</strong>. 
+            {% trans "Assigned Scope" %}: <span class="badge bg-secondary px-2 py-1">{{ scope_title }}</span>
         </p>
     </div>
 </div>
@@ -18,25 +19,25 @@
 <div class="row g-3 mb-5">
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Pending</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Pending" %}</span>
             <span class="display-6 fw-bold text-warning">{{ pending_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">In Progress</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "In Progress" %}</span>
             <span class="display-6 fw-bold text-info">{{ progress_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Resolved</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Resolved" %}</span>
             <span class="display-6 fw-bold text-success">{{ resolved_count }}</span>
         </div>
     </div>
     <div class="col-6 col-lg-3">
         <div class="glass-panel p-4 text-center">
-            <span class="text-white-50 d-block mb-1 fs-6">Rejected</span>
+            <span class="text-white-50 d-block mb-1 fs-6">{% trans "Rejected" %}</span>
             <span class="display-6 fw-bold text-danger">{{ rejected_count }}</span>
         </div>
     </div>
@@ -44,14 +45,14 @@
 
 <!-- Filters Panel -->
 <div class="glass-panel p-4 mb-4">
-    <h5 class="mb-3 text-white-50">Filter Complaints</h5>
+    <h5 class="mb-3 text-white-50">{% trans "Filter Complaints" %}</h5>
     <form method="GET" action="{% url 'officer_dashboard' %}" class="row g-3 align-items-end">
         <div class="col-md-4">
-            <label class="form-label text-white-50 fs-7">Search Query</label>
-            <input type="text" name="search" class="form-control glass-input" placeholder="Search Reference, Title, Citizen..." value="{{ search_query }}">
+            <label class="form-label text-white-50 fs-7">{% trans "Search Query" %}</label>
+            <input type="text" name="search" class="form-control glass-input" placeholder="{% trans 'Search Reference, Title, Citizen...' %}" value="{{ search_query }}">
         </div>
         <div class="col-md-3">
-            <label class="form-label text-white-50 fs-7">Category</label>
+            <label class="form-label text-white-50 fs-7">{% trans "Category" %}</label>
             <select name="category" class="form-select glass-input">
                 <option value="">-- All Categories --</option>
                 {% for cat_val, cat_lbl in categories %}
@@ -60,7 +61,7 @@
             </select>
         </div>
         <div class="col-md-3">
-            <label class="form-label text-white-50 fs-7">Status</label>
+            <label class="form-label text-white-50 fs-7">{% trans "Status" %}</label>
             <select name="status" class="form-select glass-input">
                 <option value="">-- All Statuses --</option>
                 {% for stat_val, stat_lbl in statuses %}
@@ -70,7 +71,7 @@
         </div>
         <div class="col-md-2 d-grid">
             <button type="submit" class="btn btn-premium py-2">
-                <i class="bi bi-filter me-1"></i> Apply
+                <i class="bi bi-filter me-1"></i> {% trans "Apply" %}
             </button>
         </div>
     </form>
@@ -78,25 +79,25 @@
 
 <!-- Complaints List Card -->
 <div class="glass-panel p-4">
-    <h4 class="mb-4">Assigned Public Complaints ({{ complaints.count }})</h4>
+    <h4 class="mb-4">{% trans "Assigned Public Complaints" %} ({{ complaints.count }})</h4>
     
     {% if not complaints %}
         <div class="text-center py-5 text-white-50">
             <i class="bi bi-inbox fs-1 d-block mb-3 text-secondary"></i>
-            No complaints found matching the filters or scope.
+            {% trans "No complaints found matching the filters or scope." %}
         </div>
     {% else %}
         <div class="table-responsive">
             <table class="table table-hover table-glass align-middle mb-0">
                 <thead>
                     <tr>
-                        <th>Ref Number</th>
-                        <th>Date Submitted</th>
-                        <th>Category</th>
-                        <th>Complaint Subject</th>
-                        <th>Citizen</th>
-                        <th>Status</th>
-                        <th class="text-center">Action</th>
+                        <th>{% trans "Ref Number" %}</th>
+                        <th>{% trans "Date Submitted" %}</th>
+                        <th>{% trans "Category" %}</th>
+                        <th>{% trans "Complaint Subject" %}</th>
+                        <th>{% trans "Citizen" %}</th>
+                        <th>{% trans "Status" %}</th>
+                        <th class="text-center">{% trans "Action" %}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -130,7 +131,7 @@
                             </td>
                             <td class="text-center">
                                 <button type="button" class="btn btn-glass btn-sm" data-bs-toggle="modal" data-bs-target="#updateModal{{ c.id }}">
-                                    <i class="bi bi-pencil-square me-1"></i> Review
+                                    <i class="bi bi-pencil-square me-1"></i> {% trans "Review" %}
                                 </button>
                             </td>
                         </tr>
@@ -146,25 +147,25 @@
                                     <div class="modal-body">
                                         <div class="row g-3 mb-4">
                                             <div class="col-md-6">
-                                                <h6 class="text-white-50 fs-8 mb-1">CITIZEN DETAIL</h6>
+                                                <h6 class="text-white-50 fs-8 mb-1">{% trans "CITIZEN DETAIL" %}</h6>
                                                 <p class="mb-0">{{ c.citizen_name }} ({{ c.citizen_phone }} | {{ c.citizen_email }})</p>
                                             </div>
                                             <div class="col-md-6">
-                                                <h6 class="text-white-50 fs-8 mb-1">LOCATION / WASAMA</h6>
+                                                <h6 class="text-white-50 fs-8 mb-1">{% trans "LOCATION / WASAMA" %}</h6>
                                                 <p class="mb-0">{{ c.wasama.name }} GN, {{ c.pradeshiya_sabha.name }}</p>
                                             </div>
                                             <div class="col-12">
-                                                <h6 class="text-white-50 fs-8 mb-1">COMPLAINT SUBJECT</h6>
+                                                <h6 class="text-white-50 fs-8 mb-1">{% trans "COMPLAINT SUBJECT" %}</h6>
                                                 <p class="mb-0 fw-semibold">{{ c.title }}</p>
                                             </div>
                                             <div class="col-12">
-                                                <h6 class="text-white-50 fs-8 mb-1">DESCRIPTION</h6>
+                                                <h6 class="text-white-50 fs-8 mb-1">{% trans "DESCRIPTION" %}</h6>
                                                 <p class="mb-0 text-white-50 bg-black bg-opacity-20 p-3 rounded" style="white-space: pre-line;">{{ c.description }}</p>
                                             </div>
                                             
                                             {% if c.evidence_file %}
                                             <div class="col-12">
-                                                <h6 class="text-info fs-8 mb-2">ATTACHED EVIDENCE</h6>
+                                                <h6 class="text-info fs-8 mb-2">{% trans "ATTACHED EVIDENCE" %}</h6>
                                                 {% with extension=c.evidence_file.name|lower %}
                                                     {% if '.jpg' in extension or '.jpeg' in extension or '.png' in extension or '.gif' in extension or '.webp' in extension %}
                                                         <div class="text-center bg-black bg-opacity-20 p-2 rounded">
@@ -172,7 +173,7 @@
                                                         </div>
                                                     {% else %}
                                                         <a href="{{ c.evidence_file.url }}" target="_blank" class="btn btn-glass btn-sm">
-                                                            <i class="bi bi-download me-2"></i>Download Evidence File ({{ c.evidence_file.name }})
+                                                            <i class="bi bi-download me-2"></i>{% trans "Download Evidence File" %} ({{ c.evidence_file.name }})
                                                         </a>
                                                     {% endif %}
                                                 {% endwith %}
@@ -182,11 +183,11 @@
 
                                         <form method="POST" action="{% url 'update_complaint_status' complaint_id=c.id %}">
                                             {% csrf_token %}
-                                            <h5 class="border-top border-secondary pt-3 mb-3 text-info">Update Progress</h5>
+                                            <h5 class="border-top border-secondary pt-3 mb-3 text-info">{% trans "Update Progress" %}</h5>
                                             
                                             <div class="row g-3">
                                                 <div class="col-md-6">
-                                                    <label class="form-label text-white-50">Select Status</label>
+                                                    <label class="form-label text-white-50">{% trans "Select Status" %}</label>
                                                     <select name="status" class="form-select modal-input" required>
                                                         {% for stat_val, stat_lbl in statuses %}
                                                             <option value="{{ stat_val }}" {% if c.status == stat_val %}selected{% endif %}>{{ stat_lbl }}</option>
@@ -194,13 +195,13 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-12">
-                                                    <label class="form-label text-white-50">Action Remark / Explanation</label>
-                                                    <textarea name="remark" class="form-control modal-input" rows="3" placeholder="Describe the action taken or reasoning for status update..." required></textarea>
+                                                    <label class="form-label text-white-50">{% trans "Action Remark / Explanation" %}</label>
+                                                    <textarea name="remark" class="form-control modal-input" rows="3" placeholder="{% trans 'Describe the action taken or reasoning for status update...' %}" required></textarea>
                                                 </div>
                                             </div>
                                             <div class="modal-footer px-0 pb-0 mt-4">
-                                                <button type="button" class="btn btn-glass" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-premium">Submit Update</button>
+                                                <button type="button" class="btn btn-glass" data-bs-dismiss="modal">{% trans "Close" %}</button>
+                                                <button type="submit" class="btn btn-premium">{% trans "Submit Update" %}</button>
                                             </div>
                                         </form>
                                     </div>
