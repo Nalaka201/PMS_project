@@ -3,10 +3,10 @@ from complaints.models import District, PradeshiyaSabha
 
 
 class Command(BaseCommand):
-    help = 'Seeds Anuradhapura Pradeshiya Sabhas into the database.'
+    help = 'Populates Anuradhapura Pradeshiya Sabhas into the database.'
 
     def handle(self, *args, **options):
-        self.stdout.write('Seeding Anuradhapura Pradeshiya Sabhas...')
+        self.stdout.write('Populating Anuradhapura Pradeshiya Sabhas...')
 
         # Get or create Anuradhapura district
         district, created = District.objects.get_or_create(name='Anuradhapura')

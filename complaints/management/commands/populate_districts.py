@@ -3,10 +3,10 @@ from complaints.models import District
 
 
 class Command(BaseCommand):
-    help = 'Seeds all 25 Sri Lankan districts into the database.'
+    help = 'Populates all 25 Sri Lankan districts into the database.'
 
     def handle(self, *args, **options):
-        self.stdout.write('Seeding Sri Lanka districts...')
+        self.stdout.write('Populating Sri Lanka districts...')
 
         districts = [
             'Colombo',

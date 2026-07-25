@@ -38,10 +38,10 @@ def compile_po_files():
                 try:
                     po = polib.pofile(po_path)
                     po.save_as_mofile(mo_path)
-                    print(f"  ✔ Compiled: {po_path} → {mo_path}")
+                    print(f"  [OK] Compiled: {po_path} -> {mo_path}")
                     compiled += 1
                 except Exception as e:
-                    print(f"  ✘ Error compiling {po_path}: {e}")
+                    print(f"  [ERROR] Error compiling {po_path}: {e}")
     
     if compiled == 0:
         print("No .po files found to compile.")

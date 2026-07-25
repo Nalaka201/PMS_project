@@ -5,10 +5,10 @@ from django.utils import timezone
 import random
 
 class Command(BaseCommand):
-    help = 'Seeds the database with mock districts, sabhas, wasamas, users, and sample complaints.'
+    help = 'Populates the database with mock districts, sabhas, wasamas, users, and sample complaints.'
 
     def handle(self, *args, **options):
-        self.stdout.write('Seeding mock data...')
+        self.stdout.write('Populating mock data...')
 
         # 1. Create Districts
         districts_data = ['Colombo', 'Kandy', 'Galle']
@@ -237,8 +237,8 @@ class Command(BaseCommand):
                             status_to=s_to
                         )
                         self.stdout.write(f"  Added Remark: {rem_text[:30]}...")
-            self.stdout.write('Mock complaints successfully seeded!')
+            self.stdout.write('Mock complaints successfully populated!')
         else:
-            self.stdout.write('Complaints already exist in database, skipping seeding complaints.')
+            self.stdout.write('Complaints already exist in database, skipping populating complaints.')
 
-        self.stdout.write('Mock seeding complete!')
+        self.stdout.write('Mock populating complete!')

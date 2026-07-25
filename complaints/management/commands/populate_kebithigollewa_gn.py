@@ -3,23 +3,23 @@ from complaints.models import District, PradeshiyaSabha, Wasama
 
 
 class Command(BaseCommand):
-    help = 'Seeds GN Divisions (Wasamas) for Kebithigollewa Pradeshiya Sabha.'
+    help = 'Populates GN Divisions (Wasamas) for Kebithigollewa Pradeshiya Sabha.'
 
     def handle(self, *args, **options):
-        self.stdout.write('Seeding Kebithigollewa GN Divisions...')
+        self.stdout.write('Populating Kebithigollewa GN Divisions...')
 
         # Get Anuradhapura district
         try:
             district = District.objects.get(name='Anuradhapura')
         except District.DoesNotExist:
-            self.stdout.write(self.style.ERROR('ERROR: Anuradhapura district not found. Run seed_anuradhapura first.'))
+            self.stdout.write(self.style.ERROR('ERROR: Anuradhapura district not found. Run populate_anuradhapura first.'))
             return
 
         # Get Kebithigollewa Pradeshiya Sabha
         try:
             sabha = PradeshiyaSabha.objects.get(name='Kebithigollewa', district=district)
         except PradeshiyaSabha.DoesNotExist:
-            self.stdout.write(self.style.ERROR('ERROR: Kebithigollewa PS not found. Run seed_anuradhapura first.'))
+            self.stdout.write(self.style.ERROR('ERROR: Kebithigollewa PS not found. Run populate_anuradhapura first.'))
             return
 
         self.stdout.write(f'Found: {sabha}')
