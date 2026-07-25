@@ -16,7 +16,6 @@ class Command(BaseCommand):
             self.stdout.write('District found: Anuradhapura')
 
         sabhas = [
-            'Galnewa',
             'Galenbindunuwewa',
             'Horowpothana',
             'Ipalogama',
