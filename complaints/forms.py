@@ -46,6 +46,11 @@ class ComplaintForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        self.fields['district'].empty_label = _("-- Select District --")
+        self.fields['pradeshiya_sabha'].empty_label = _("-- Select Pradeshiya Sabha --")
+        self.fields['wasama'].empty_label = _("-- Select Wasama --")
+        self.fields['category'].choices = [('', _('-- Select Category --'))] + list(Complaint.CATEGORY_CHOICES)
+
         # On initial load, clear the queryset or adjust for sabha and wasama if district/sabha is not selected
         # because the frontend will populate them dynamically using AJAX.
         self.fields['pradeshiya_sabha'].queryset = PradeshiyaSabha.objects.none()

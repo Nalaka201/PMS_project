@@ -3,13 +3,13 @@ import random
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, gettext as _t
 
 class District(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.name
+        return _t(self.name)
 
 class PradeshiyaSabha(models.Model):
     name = models.CharField(max_length=150)
@@ -54,12 +54,31 @@ class OfficerProfile(models.Model):
 
 class Complaint(models.Model):
     CATEGORY_CHOICES = (
-        ('ROAD_DAMAGE', _('Road Damage')),
-        ('WASTE_MGMT', _('Waste Management')),
-        ('DRAINAGE', _('Drainage Issues')),
-        ('STREET_LIGHT', _('Street Lighting')),
-        ('ENVIRONMENT', _('Environmental Concerns')),
-        ('PUBLIC_SVC', _('Public Services')),
+        ('WATER_SUPPLY', _('Water Supply Issues')),
+        ('IRRIGATION', _('Irrigation Issues')),
+        ('ROAD_BRIDGE_DAMAGE', _('Road & Bridge Damage')),
+        ('WASTE_MGMT', _('Waste Management Issues')),
+        ('ELECTRICITY_SUPPLY', _('Electricity Supply Issues')),
+        ('DRAINAGE_FLOOD', _('Drainage & Flood Issues')),
+        ('LAND_ISSUES', _('Land Issues')),
+        ('HOUSING_ISSUES', _('Housing Issues')),
+        ('HEALTHCARE_SHORTAGE', _('Healthcare Shortages')),
+        ('EDUCATION_FACILITIES', _('School & Educational Facility Shortages')),
+        ('TRANSPORT_ISSUES', _('Transport Issues')),
+        ('EMPLOYMENT_ISSUES', _('Employment Shortages')),
+        ('AGRICULTURE_ISSUES', _('Agricultural Issues')),
+        ('WILDLIFE_CONFLICT', _('Human-Wildlife Conflict (Elephants, Monkeys, etc.)')),
+        ('ENVIRONMENT_POLLUTION', _('Environmental Pollution')),
+        ('ILLEGAL_MINING_LOGGING', _('Illegal Sand, Stone & Timber Mining')),
+        ('NARCOTICS_CRIME', _('Narcotics & Crime')),
+        ('NOISE_POLLUTION', _('Noise Pollution')),
+        ('STREET_LIGHTING', _('Faulty Street Lighting')),
+        ('PUBLIC_SAFETY', _('Public Safety Issues')),
+        ('MARKET_COST_LIVING', _('Market & Cost of Living Issues')),
+        ('CORRUPTION_IRREGULARITIES', _('Irregularities & Corruption')),
+        ('PUBLIC_LAND_ENCROACHMENT', _('Encroachment of Public Lands')),
+        ('STRAY_ANIMALS', _('Animal Waste & Stray Animals Issues')),
+        ('TELECOM_INTERNET', _('Internet & Telecom Service Issues')),
         ('OTHER', _('Other')),
     )
 

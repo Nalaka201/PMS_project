@@ -41,16 +41,41 @@ def track_complaint(request, ref_num):
     remarks = complaint.remarks.all()
     return render(request, 'track.html', {'complaint': complaint, 'remarks': remarks})
 
+def translate_place_name(name):
+    if not name:
+        return ""
+    trans = str(_(name))
+    if trans != name:
+        return trans
+    res = name
+    replacements = [
+        ("Pradeshiya Sabha", str(_("Pradeshiya Sabha"))),
+        ("Municipal Council", str(_("Municipal Council"))),
+        ("Urban Council", str(_("Urban Council"))),
+        ("North", str(_("North"))),
+        ("South", str(_("South"))),
+        ("East", str(_("East"))),
+        ("West", str(_("West"))),
+        ("Central", str(_("Central"))),
+        ("Town", str(_("Town"))),
+    ]
+    for eng, tr in replacements:
+        if eng in res:
+            res = res.replace(eng, tr)
+    return res
+
 # AJAX Cascading boundaries APIs
 def get_sabhas(request):
     district_id = request.GET.get('district_id')
-    sabhas = PradeshiyaSabha.objects.filter(district_id=district_id).values('id', 'name')
-    return JsonResponse(list(sabhas), safe=False)
+    sabhas = PradeshiyaSabha.objects.filter(district_id=district_id)
+    data = [{'id': s.id, 'name': translate_place_name(s.name)} for s in sabhas]
+    return JsonResponse(data, safe=False)
 
 def get_wasamas(request):
     sabha_id = request.GET.get('sabha_id')
-    wasamas = Wasama.objects.filter(pradeshiya_sabha_id=sabha_id).values('id', 'name', 'code')
-    return JsonResponse(list(wasamas), safe=False)
+    wasamas = Wasama.objects.filter(pradeshiya_sabha_id=sabha_id)
+    data = [{'id': w.id, 'name': translate_place_name(w.name), 'code': w.code} for w in wasamas]
+    return JsonResponse(data, safe=False)
 
 # Auth dashboard routing
 @login_required
@@ -151,7 +176,7 @@ def admin_dashboard(request):
     category_counts = []
     category_dict = dict(Complaint.CATEGORY_CHOICES)
     for data in category_chart_data:
-        category_labels.append(category_dict.get(data['category'], data['category']))
+        category_labels.append(str(category_dict.get(data['category'], data['category'])))
         category_counts.append(data['count'])
 
     # Group by district for Chart.js
@@ -159,7 +184,7 @@ def admin_dashboard(request):
     district_labels = []
     district_counts = []
     for data in district_chart_data:
-        district_labels.append(data['district__name'] or 'Unknown')
+        district_labels.append(str(data['district__name'] or _('Unknown')))
         district_counts.append(data['count'])
 
     # User management lists

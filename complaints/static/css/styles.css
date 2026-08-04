@@ -1,27 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;600;700&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
 
 :root {
-    --bg-dark: #0b0f19;
-    --bg-card: rgba(17, 24, 39, 0.7);
-    --bg-card-hover: rgba(31, 41, 55, 0.85);
-    --border-color: rgba(255, 255, 255, 0.07);
-    --text-primary: #f9fafb;
-    --text-secondary: #9ca3af;
-    --accent-blue: #0ea5e9;
+    /* Sri Lankan Official State Theme Palette */
+    --bg-dark: #070d18;
+    --bg-dark-secondary: #0f172a;
+    --bg-card: rgba(15, 23, 42, 0.75);
+    --bg-card-hover: rgba(24, 35, 61, 0.88);
+    
+    /* Sri Lanka Lion Flag & State Color Accents */
+    --sl-gold: #f59e0b;
+    --sl-gold-light: #fbbf24;
+    --sl-emerald: #059669;
+    --sl-teal: #10b981;
+    --sl-sapphire: #2563eb;
+    --sl-maroon: #991b1b;
+    --sl-orange: #f97316;
+    
+    --border-color: rgba(245, 158, 11, 0.15);
+    --border-hover: rgba(245, 158, 11, 0.35);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    
+    --accent-blue: #38bdf8;
     --accent-cyan: #06b6d4;
-    --accent-indigo: #6366f1;
     --accent-green: #10b981;
     --accent-amber: #f59e0b;
     --accent-red: #ef4444;
-    --font-heading: 'Outfit', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    
+    --font-heading: 'Outfit', 'Noto Sans Sinhala', 'Noto Sans Tamil', sans-serif;
+    --font-body: 'Inter', 'Noto Sans Sinhala', 'Noto Sans Tamil', sans-serif;
+}
+
+/* Top Sri Lanka Flag Accent Bar */
+.sl-top-ribbon {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(90deg, 
+        #991b1b 0%, #991b1b 25%, 
+        #f97316 25%, #f97316 45%, 
+        #059669 45%, #059669 65%, 
+        #f59e0b 65%, #f59e0b 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
 }
 
 body {
     background-color: var(--bg-dark);
     background-image: 
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+        radial-gradient(at 10% 10%, rgba(5, 150, 105, 0.12) 0px, transparent 45%),
+        radial-gradient(at 90% 90%, rgba(245, 158, 11, 0.1) 0px, transparent 45%),
+        radial-gradient(at 50% 50%, rgba(37, 99, 235, 0.08) 0px, transparent 60%);
     background-attachment: fixed;
     color: var(--text-primary);
     font-family: var(--font-body);
@@ -29,6 +59,7 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    padding-top: 4px;
 }
 
 h1, h2, h3, h4, h5, h6, .navbar-brand {
@@ -37,64 +68,96 @@ h1, h2, h3, h4, h5, h6, .navbar-brand {
     letter-spacing: -0.02em;
 }
 
+/* Sri Lanka Emblem Emblem Badge */
+.sl-emblem-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+    border: 1px solid var(--sl-gold);
+    color: var(--sl-gold-light);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+}
+
+.text-gold {
+    color: var(--sl-gold-light) !important;
+}
+
+.text-gradient-gold {
+    background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+    background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Glassmorphism Classes */
 .glass-panel {
     background: var(--bg-card);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel-hover:hover {
     background: var(--bg-card-hover);
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-    border-color: rgba(99, 102, 241, 0.25);
+    box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.55);
+    border-color: var(--border-hover);
 }
 
 .glass-input {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(15, 23, 42, 0.6) !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-primary) !important;
-    border-radius: 8px !important;
+    border-radius: 10px !important;
     font-family: var(--font-body);
     transition: all 0.2s ease;
 }
 
 .glass-input:focus {
-    background: rgba(255, 255, 255, 0.06) !important;
-    border-color: var(--accent-indigo) !important;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    border-color: var(--sl-gold) !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25) !important;
 }
 
 .glass-input::placeholder {
-    color: rgba(255, 255, 255, 0.35) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* Custom Select Dropdowns */
 select.glass-input option {
-    background-color: #111827;
+    background-color: #0f172a;
     color: var(--text-primary);
+    padding: 10px;
 }
 
 /* Buttons */
 .btn-premium {
-    background: linear-gradient(135deg, var(--accent-indigo) 0%, var(--accent-cyan) 100%);
+    background: linear-gradient(135deg, var(--sl-emerald) 0%, #047857 50%, var(--sl-gold) 100%);
     border: none;
     color: white;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 10px 24px;
+    box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
     transition: all 0.3s ease;
 }
 
 .btn-premium:hover {
     opacity: 0.95;
-    transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(245, 158, 11, 0.4);
     color: white;
 }
 
@@ -102,40 +165,40 @@ select.glass-input option {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--border-color);
     color: var(--text-primary);
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 10px 24px;
     transition: all 0.2s ease;
 }
 
 .btn-glass:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--sl-gold-light);
+    border-color: var(--sl-gold);
 }
 
 /* Status Badges */
 .badge-pending {
-    background-color: rgba(245, 158, 11, 0.15);
-    color: var(--accent-amber);
-    border: 1px solid rgba(245, 158, 11, 0.3);
+    background-color: rgba(245, 158, 11, 0.18);
+    color: var(--sl-gold-light);
+    border: 1px solid rgba(245, 158, 11, 0.4);
 }
 
 .badge-progress {
-    background-color: rgba(14, 165, 233, 0.15);
-    color: var(--accent-blue);
-    border: 1px solid rgba(14, 165, 233, 0.3);
+    background-color: rgba(37, 99, 235, 0.18);
+    color: #60a5fa;
+    border: 1px solid rgba(37, 99, 235, 0.4);
 }
 
 .badge-resolved {
-    background-color: rgba(16, 185, 129, 0.15);
-    color: var(--accent-green);
-    border: 1px solid rgba(16, 185, 129, 0.3);
+    background-color: rgba(5, 150, 105, 0.18);
+    color: var(--sl-teal);
+    border: 1px solid rgba(5, 150, 105, 0.4);
 }
 
 .badge-rejected {
-    background-color: rgba(239, 68, 68, 0.15);
-    color: var(--accent-red);
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background-color: rgba(225, 29, 72, 0.18);
+    color: #f43f5e;
+    border: 1px solid rgba(225, 29, 72, 0.4);
 }
 
 /* Timeline Components */
@@ -156,21 +219,21 @@ select.glass-input option {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background-color: var(--accent-indigo);
+    background-color: var(--sl-gold);
     border: 3px solid var(--bg-dark);
     left: -41px;
     top: 4px;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25);
 }
 
 .timeline-item.resolved::after {
-    background-color: var(--accent-green);
-    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    background-color: var(--sl-emerald);
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.25);
 }
 
 .timeline-item.rejected::after {
     background-color: var(--accent-red);
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
 }
 
 /* Scrollbar styling */
@@ -182,11 +245,11 @@ select.glass-input option {
     background: var(--bg-dark);
 }
 ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(245, 158, 11, 0.2);
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(245, 158, 11, 0.4);
 }
 
 /* Table overrides */
@@ -197,7 +260,7 @@ select.glass-input option {
 .table-glass th {
     border-bottom: 2px solid var(--border-color) !important;
     font-family: var(--font-heading);
-    color: var(--text-secondary);
+    color: var(--sl-gold-light);
 }
 
 .table-glass td {
@@ -213,9 +276,10 @@ select.glass-input option {
 
 /* Modal form adjustments */
 .modal-content {
-    background-color: #111827 !important;
+    background-color: #0f172a !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-primary) !important;
+    border-radius: 16px !important;
 }
 .modal-header, .modal-footer {
     border-color: var(--border-color) !important;
@@ -224,9 +288,10 @@ select.glass-input option {
     background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-primary) !important;
+    border-radius: 10px !important;
 }
 .modal-input:focus {
     background: rgba(255, 255, 255, 0.08) !important;
-    border-color: var(--accent-indigo) !important;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25) !important;
+    border-color: var(--sl-gold) !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.25) !important;
 }

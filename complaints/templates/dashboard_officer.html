@@ -54,7 +54,7 @@
         <div class="col-md-3">
             <label class="form-label text-white-50 fs-7">{% trans "Category" %}</label>
             <select name="category" class="form-select glass-input">
-                <option value="">-- All Categories --</option>
+                <option value="">{% trans "-- All Categories --" %}</option>
                 {% for cat_val, cat_lbl in categories %}
                     <option value="{{ cat_val }}" {% if selected_category == cat_val %}selected{% endif %}>{{ cat_lbl }}</option>
                 {% endfor %}
@@ -63,7 +63,7 @@
         <div class="col-md-3">
             <label class="form-label text-white-50 fs-7">{% trans "Status" %}</label>
             <select name="status" class="form-select glass-input">
-                <option value="">-- All Statuses --</option>
+                <option value="">{% trans "-- All Statuses --" %}</option>
                 {% for stat_val, stat_lbl in statuses %}
                     <option value="{{ stat_val }}" {% if selected_status == stat_val %}selected{% endif %}>{{ stat_lbl }}</option>
                 {% endfor %}
@@ -120,13 +120,13 @@
                             </td>
                             <td>
                                 {% if c.status == 'PENDING' %}
-                                    <span class="badge badge-pending">Pending</span>
+                                    <span class="badge badge-pending">{% trans "Pending" %}</span>
                                 {% elif c.status == 'IN_PROGRESS' %}
-                                    <span class="badge badge-progress">In Progress</span>
+                                    <span class="badge badge-progress">{% trans "In Progress" %}</span>
                                 {% elif c.status == 'RESOLVED' %}
-                                    <span class="badge badge-resolved">Resolved</span>
+                                    <span class="badge badge-resolved">{% trans "Resolved" %}</span>
                                 {% elif c.status == 'REJECTED' %}
-                                    <span class="badge badge-rejected">Rejected</span>
+                                    <span class="badge badge-rejected">{% trans "Rejected" %}</span>
                                 {% endif %}
                             </td>
                             <td class="text-center">
@@ -141,7 +141,7 @@
                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabel{{ c.id }}">Review Complaint: {{ c.reference_number }}</h5>
+                                        <h5 class="modal-title" id="modalLabel{{ c.id }}">{% trans "Review Complaint" %}: {{ c.reference_number }}</h5>
                                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">

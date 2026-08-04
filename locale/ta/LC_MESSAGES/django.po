@@ -482,3 +482,223 @@ msgstr "புகார் %(reference)s வெற்றிகரமாக ப�
 
 msgid "Invalid status selected."
 msgstr "செல்லாத நிலை தேர்ந்தெடுக்கப்பட்டது."
+
+# --- Complaint Categories ---
+msgid "Water Supply Issues"
+msgstr "குடிநீர் வழங்கல் பிரச்சினைகள்"
+
+msgid "Irrigation Issues"
+msgstr "பாசனப் பிரச்சினைகள்"
+
+msgid "Road & Bridge Damage"
+msgstr "வீதிகள் மற்றும் பாலங்கள் சேதமடைதல்"
+
+msgid "Waste Management Issues"
+msgstr "கழிவு மேலாண்மைப் பிரச்சினைகள்"
+
+msgid "Electricity Supply Issues"
+msgstr "மின்சார விநியோகப் பிரச்சினைகள்"
+
+msgid "Drainage & Flood Issues"
+msgstr "வடிகால் மற்றும் வெள்ளப் பிரச்சினைகள்"
+
+msgid "Land Issues"
+msgstr "காணிப் பிரச்சினைகள்"
+
+msgid "Housing Issues"
+msgstr "வீட்டுவசதிப் பிரச்சினைகள்"
+
+msgid "Healthcare Shortages"
+msgstr "சுகாதாரச் சேவை பற்றாக்குறை"
+
+msgid "School & Educational Facility Shortages"
+msgstr "பாடசாலை மற்றும் கல்வி வசதிகள் பற்றாக்குறை"
+
+msgid "Transport Issues"
+msgstr "போக்குவரத்துப் பிரச்சினைகள்"
+
+msgid "Employment Shortages"
+msgstr "வேலைவாய்ப்பு பற்றாக்குறை"
+
+msgid "Agricultural Issues"
+msgstr "விவசாயப் பிரச்சினைகள்"
+
+msgid "Human-Wildlife Conflict (Elephants, Monkeys, etc.)"
+msgstr "வனவிலங்கு பாதிப்புகள் (காட்டு யானை, குரங்கு போன்றவை)"
+
+msgid "Environmental Pollution"
+msgstr "சுற்றுச்சூழல் மாசுபாடு"
+
+msgid "Illegal Sand, Stone & Timber Mining"
+msgstr "சட்டவிரோத மணல், கல் மற்றும் மரங்கள் அகற்றுதல்"
+
+msgid "Narcotics & Crime"
+msgstr "போதைப்பொருள் மற்றும் குற்றச்செயல்கள்"
+
+msgid "Noise Pollution"
+msgstr "ஒலி மாசுபாடு"
+
+msgid "Faulty Street Lighting"
+msgstr "தெருவிளக்குகள் இயங்காமை"
+
+msgid "Public Safety Issues"
+msgstr "பொதுப் பாதுகாப்புப் பிரச்சினைகள்"
+
+msgid "Market & Cost of Living Issues"
+msgstr "சந்தை மற்றும் வாழ்க்கைச் செலவுப் பிரச்சினைகள்"
+
+msgid "Irregularities & Corruption"
+msgstr "முறைக்கேடுகள் மற்றும் ஊழல்"
+
+msgid "Encroachment of Public Lands"
+msgstr "பொதுக் காணிகளை சட்டவிரோதமாக ஆக்கிரமித்தல்"
+
+msgid "Animal Waste & Stray Animals Issues"
+msgstr "விலங்குக் கழிவுகள் மற்றும் தெரு விலங்குகள் தொடர்பான பிரச்சினைகள்"
+
+msgid "Internet & Telecom Service Issues"
+msgstr "இணையம் மற்றும் தொலைபேசி சேவைப் பிரச்சினைகள்"
+
+msgid "Democratic Socialist Republic of Sri Lanka"
+msgstr "இலங்கை ஜனநாயக சோசலிசக் குடியரசு"
+
+msgid "Unknown"
+msgstr "தெரியாதது"
+
+# --- Districts of Sri Lanka (Tamil) ---
+msgid "Colombo"
+msgstr "கொழும்பு"
+
+msgid "Gampaha"
+msgstr "கம்பஹா"
+
+msgid "Kalutara"
+msgstr "களுத்துறை"
+
+msgid "Kandy"
+msgstr "கண்டி"
+
+msgid "Matale"
+msgstr "மாத்தளை"
+
+msgid "Nuwara Eliya"
+msgstr "நுவரெலியா"
+
+msgid "Galle"
+msgstr "காலி"
+
+msgid "Matara"
+msgstr "மாத்தறை"
+
+msgid "Hambantota"
+msgstr "அம்பாந்தோட்டை"
+
+msgid "Jaffna"
+msgstr "யாழ்ப்பாணம்"
+
+msgid "Kilinochchi"
+msgstr "கிளிநொச்சி"
+
+msgid "Mannar"
+msgstr "மன்னார்"
+
+msgid "Vavuniya"
+msgstr "வவுனியா"
+
+msgid "Mullaitivu"
+msgstr "முல்லைத்தீவு"
+
+msgid "Batticaloa"
+msgstr "மட்டக்களப்பு"
+
+msgid "Ampara"
+msgstr "அம்பாறை"
+
+msgid "Trincomalee"
+msgstr "திருகோணமலை"
+
+msgid "Kurunegala"
+msgstr "குருணாகல்"
+
+msgid "Puttalam"
+msgstr "புத்தளம்"
+
+msgid "Anuradhapura"
+msgstr "அனுராதபுரம்"
+
+msgid "Polonnaruwa"
+msgstr "பொலன்னறுவை"
+
+msgid "Badulla"
+msgstr "பதுளை"
+
+msgid "Monaragala"
+msgstr "மொனராகலை"
+
+msgid "Ratnapura"
+msgstr "இரத்தினபுரி"
+
+msgid "Kegalle"
+msgstr "கேகாலை"
+
+# --- Dropdown & Suffix Translations (Tamil) ---
+msgid "Pradeshiya Sabha"
+msgstr "பிரதேச சபை"
+
+msgid "Municipal Council"
+msgstr "மாநகர சபை"
+
+msgid "Urban Council"
+msgstr "நகர சபை"
+
+msgid "North"
+msgstr "வடக்கு"
+
+msgid "South"
+msgstr "தெற்கு"
+
+msgid "East"
+msgstr "கிழக்கு"
+
+msgid "West"
+msgstr "மேற்கு"
+
+msgid "Central"
+msgstr "மத்திய"
+
+msgid "Town"
+msgstr "நகரம்"
+
+msgid "PS"
+msgstr "பிரதேச சபை"
+
+msgid "UC"
+msgstr "நகர சபை"
+
+msgid "MC"
+msgstr "மாநகர சபை"
+
+msgid "-- Select District --"
+msgstr "-- மாவட்டத்தைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "-- Select Pradeshiya Sabha --"
+msgstr "-- பிரதேச சபையைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "-- Select Wasama --"
+msgstr "-- வசமாவைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "-- Select Category --"
+msgstr "-- வகையைத் தேர்ந்தெடுக்கவும் --"
+
+msgid "-- All Categories --"
+msgstr "-- அனைத்து வகைகளும் --"
+
+msgid "-- All Statuses --"
+msgstr "-- அனைத்து நிலைகளும் --"
+
+msgid "-- Global / No Assignment --"
+msgstr "-- பொது / ஒதுக்கீடு இல்லை --"
+
+
+
+

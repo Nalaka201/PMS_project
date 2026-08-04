@@ -94,6 +94,9 @@
 <script>
     // Asynchronous cascading dropdown selector code
     document.addEventListener('DOMContentLoaded', function() {
+        const selectSabhaText = "{% trans '-- Select Pradeshiya Sabha --' %}";
+        const selectWasamaText = "{% trans '-- Select Wasama --' %}";
+
         const districtSelect = document.getElementById('id_district');
         const sabhaSelect = document.getElementById('id_pradeshiya_sabha');
         const wasamaSelect = document.getElementById('id_wasama');
@@ -104,8 +107,8 @@
 
         districtSelect.addEventListener('change', function() {
             const districtId = this.value;
-            sabhaSelect.innerHTML = '<option value="">-- Select Pradeshiya Sabha --</option>';
-            wasamaSelect.innerHTML = '<option value="">-- Select Wasama --</option>';
+            sabhaSelect.innerHTML = `<option value="">${selectSabhaText}</option>`;
+            wasamaSelect.innerHTML = `<option value="">${selectWasamaText}</option>`;
             wasamaSelect.disabled = true;
 
             if (districtId) {
@@ -128,7 +131,7 @@
 
         sabhaSelect.addEventListener('change', function() {
             const sabhaId = this.value;
-            wasamaSelect.innerHTML = '<option value="">-- Select Wasama --</option>';
+            wasamaSelect.innerHTML = `<option value="">${selectWasamaText}</option>`;
 
             if (sabhaId) {
                 fetch(`/api/get_wasamas/?sabha_id=${sabhaId}`)

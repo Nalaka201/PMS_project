@@ -482,3 +482,223 @@ msgstr "පැමිණිල්ල %(reference)s සාර්ථකව යා�
 
 msgid "Invalid status selected."
 msgstr "අවලංගු තත්ත්වයක් තෝරාගෙන ඇත."
+
+# --- Complaint Categories ---
+msgid "Water Supply Issues"
+msgstr "ජල සැපයුම් ගැටලු"
+
+msgid "Irrigation Issues"
+msgstr "වාරි මාර්ග ගැටලු"
+
+msgid "Road & Bridge Damage"
+msgstr "මාර්ග හා පාලම් අබලන් වීම"
+
+msgid "Waste Management Issues"
+msgstr "කසළ කළමනාකරණ ගැටලු"
+
+msgid "Electricity Supply Issues"
+msgstr "විදුලි සැපයුම් ගැටලු"
+
+msgid "Drainage & Flood Issues"
+msgstr "ජලාපවහන හා ගංවතුර ගැටලු"
+
+msgid "Land Issues"
+msgstr "ඉඩම් ගැටලු"
+
+msgid "Housing Issues"
+msgstr "නිවාස ගැටලු"
+
+msgid "Healthcare Shortages"
+msgstr "සෞඛ්ය සේවා හිඟය"
+
+msgid "School & Educational Facility Shortages"
+msgstr "පාසල් හා අධ්යාපන පහසුකම් හිඟය"
+
+msgid "Transport Issues"
+msgstr "ප්රවාහන ගැටලු"
+
+msgid "Employment Shortages"
+msgstr "රැකියා හිඟය"
+
+msgid "Agricultural Issues"
+msgstr "කෘෂිකාර්මික ගැටලු"
+
+msgid "Human-Wildlife Conflict (Elephants, Monkeys, etc.)"
+msgstr "සත්ත්ව හානි (වල් අලි, වඳුරු ආදි)"
+
+msgid "Environmental Pollution"
+msgstr "පරිසර දූෂණය"
+
+msgid "Illegal Sand, Stone & Timber Mining"
+msgstr "නීති විරෝධී වැලි, ගල් හා දැව කැපීම"
+
+msgid "Narcotics & Crime"
+msgstr "මත්ද්රව්ය හා අපරාධ"
+
+msgid "Noise Pollution"
+msgstr "ශබ්ද දූෂණය"
+
+msgid "Faulty Street Lighting"
+msgstr "වීදි ලාම්පු ක්රියා නොකිරීම"
+
+msgid "Public Safety Issues"
+msgstr "මහජන ආරක්ෂාව පිළිබඳ ගැටලු"
+
+msgid "Market & Cost of Living Issues"
+msgstr "වෙළඳපොළ හා ජීවන වියදම් ගැටලු"
+
+msgid "Irregularities & Corruption"
+msgstr "අක්රමිකතා හා දූෂණය"
+
+msgid "Encroachment of Public Lands"
+msgstr "පොදු ඉඩම් අනවසරයෙන් අල්ලා ගැනීම"
+
+msgid "Animal Waste & Stray Animals Issues"
+msgstr "සත්ව අපද්රව්ය හා වීදි සතුන් සම්බන්ධ ගැටලු"
+
+msgid "Internet & Telecom Service Issues"
+msgstr "අන්තර්ජාල හා දුරකථන සේවා ගැටලු"
+
+msgid "Democratic Socialist Republic of Sri Lanka"
+msgstr "ශ්‍රී ලංකා ප්‍රජාතාන්ත්‍රික සමාජවාදී ජනරජය"
+
+msgid "Unknown"
+msgstr "නොදන්නා"
+
+# --- Districts of Sri Lanka (Sinhala) ---
+msgid "Colombo"
+msgstr "කොළඹ"
+
+msgid "Gampaha"
+msgstr "ගම්පහ"
+
+msgid "Kalutara"
+msgstr "කළුතර"
+
+msgid "Kandy"
+msgstr "මහනුවර"
+
+msgid "Matale"
+msgstr "මාතලේ"
+
+msgid "Nuwara Eliya"
+msgstr "නුවරඑළිය"
+
+msgid "Galle"
+msgstr "ගාල්ල"
+
+msgid "Matara"
+msgstr "මාතර"
+
+msgid "Hambantota"
+msgstr "හම්බන්තොට"
+
+msgid "Jaffna"
+msgstr "යාපනය"
+
+msgid "Kilinochchi"
+msgstr "කිලිනොච්චිය"
+
+msgid "Mannar"
+msgstr "මන්නාරම"
+
+msgid "Vavuniya"
+msgstr "වවුනියාව"
+
+msgid "Mullaitivu"
+msgstr "මුලතිව්"
+
+msgid "Batticaloa"
+msgstr "මඩකලපුව"
+
+msgid "Ampara"
+msgstr "අම්පාර"
+
+msgid "Trincomalee"
+msgstr "ත්‍රිකුණාමලය"
+
+msgid "Kurunegala"
+msgstr "කුරුණෑගල"
+
+msgid "Puttalam"
+msgstr "පුත්තලම"
+
+msgid "Anuradhapura"
+msgstr "අනුරාධපුරය"
+
+msgid "Polonnaruwa"
+msgstr "පොළොන්නරුව"
+
+msgid "Badulla"
+msgstr "බදුල්ල"
+
+msgid "Monaragala"
+msgstr "මොණරාගල"
+
+msgid "Ratnapura"
+msgstr "රත්නපුරය"
+
+msgid "Kegalle"
+msgstr "කෑගල්ල"
+
+# --- Dropdown & Suffix Translations (Sinhala) ---
+msgid "Pradeshiya Sabha"
+msgstr "ප්‍රාදේශීය සභාව"
+
+msgid "Municipal Council"
+msgstr "මහනගර සභාව"
+
+msgid "Urban Council"
+msgstr "නගර සභාව"
+
+msgid "North"
+msgstr "උතුර"
+
+msgid "South"
+msgstr "දකුණ"
+
+msgid "East"
+msgstr "නැගෙනහිර"
+
+msgid "West"
+msgstr "බටහිර"
+
+msgid "Central"
+msgstr "මධ්‍යම"
+
+msgid "Town"
+msgstr "නගරය"
+
+msgid "PS"
+msgstr "ප්‍රාදේශීය සභාව"
+
+msgid "UC"
+msgstr "නගර සභාව"
+
+msgid "MC"
+msgstr "මහනගර සභාව"
+
+msgid "-- Select District --"
+msgstr "-- දිස්ත්‍රික්කයක් තෝරන්න --"
+
+msgid "-- Select Pradeshiya Sabha --"
+msgstr "-- ප්‍රාදේශීය සභාවක් තෝරන්න --"
+
+msgid "-- Select Wasama --"
+msgstr "-- වසමක් තෝරන්න --"
+
+msgid "-- Select Category --"
+msgstr "-- කාණ්ඩයක් තෝරන්න --"
+
+msgid "-- All Categories --"
+msgstr "-- සියලු කාණ්ඩ --"
+
+msgid "-- All Statuses --"
+msgstr "-- සියලු තත්ත්වයන් --"
+
+msgid "-- Global / No Assignment --"
+msgstr "-- සම්පූර්ණ / පැවරුමක් නොමැත --"
+
+
+
+
