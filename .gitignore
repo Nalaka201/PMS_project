@@ -52,12 +52,14 @@ coverage.xml
 cover/
 
 # Translations
-*.mo
 *.pot
+!locale/**/*.mo
 
 # Django stuff:
 *.log
 local_settings.py
+staticfiles/
+.vercel/
 
 # Virtual environment
 venv/

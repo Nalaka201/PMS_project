@@ -16,6 +16,7 @@ urlpatterns = [
     path('dashboard/router/', views.dashboard_router, name='dashboard_router'),
     path('dashboard/officer/', views.officer_dashboard, name='officer_dashboard'),
     path('dashboard/admin/', views.admin_dashboard, name='admin_dashboard'),
+    path('dashboard/admin/officer/<int:officer_id>/delete/', views.delete_officer, name='delete_officer'),
     path('complaint/<int:complaint_id>/update/', views.update_complaint_status, name='update_complaint_status'),
     
     # Auth views

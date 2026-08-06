@@ -187,10 +187,12 @@ def admin_dashboard(request):
         district_labels.append(str(data['district__name'] or _('Unknown')))
         district_counts.append(data['count'])
 
-    # User management lists
-    officers = OfficerProfile.objects.filter(role='OFFICER').select_related('user', 'assigned_district', 'assigned_pradeshiya_sabha', 'assigned_wasama')
+    # Officer list
+    officers = OfficerProfile.objects.filter(role='OFFICER').select_related(
+        'user', 'assigned_district', 'assigned_pradeshiya_sabha', 'assigned_wasama'
+    )
 
-    # Handle creation of locations (Districts, Sabhas, Wasamas) or new Officers in same page POST
+    # Handle POST: create officer
     if request.method == 'POST':
         action = request.POST.get('action')
         if action == 'create_officer':
@@ -206,7 +208,7 @@ def admin_dashboard(request):
                     messages.error(request, _('Username "%(username)s" already exists.') % {'username': username})
                 else:
                     new_user = User.objects.create_user(username=username, email=email, password=password)
-                    profile = OfficerProfile.objects.create(
+                    OfficerProfile.objects.create(
                         user=new_user,
                         role='OFFICER',
                         assigned_district_id=int(district_id) if district_id else None,
@@ -217,6 +219,20 @@ def admin_dashboard(request):
             else:
                 messages.error(request, _('Username and password are required.'))
             return redirect('admin_dashboard')
+
+    # Search & filter for All Complaints table
+    search_query = request.GET.get('search', '').strip()
+    status_filter = request.GET.get('status_filter', '').strip()
+
+    all_complaints = Complaint.objects.all()
+    if search_query:
+        all_complaints = all_complaints.filter(
+            Q(reference_number__icontains=search_query) |
+            Q(title__icontains=search_query) |
+            Q(citizen_name__icontains=search_query)
+        )
+    if status_filter:
+        all_complaints = all_complaints.filter(status=status_filter)
 
     districts = District.objects.all()
     return render(request, 'dashboard_admin.html', {
@@ -230,8 +246,32 @@ def admin_dashboard(request):
         'district_counts': district_counts,
         'officers': officers,
         'districts': districts,
-        'complaints': complaints[:10]  # Show recent 10 complaints in admin landing
+        'all_complaints': all_complaints,        # Full table (with search/filter)
+        'recent_complaints': complaints[:10],    # Recent 10 for sidebar
+        'search_query': search_query,
+        'status_filter': status_filter,
     })
+
+@login_required
+def delete_officer(request, officer_id):
+    profile = get_object_or_404(OfficerProfile, user=request.user)
+    if profile.role != 'ADMIN':
+        messages.error(request, _('Access denied. You do not have administrator privileges.'))
+        return redirect('officer_dashboard')
+
+    if request.method == 'POST':
+        officer_profile = get_object_or_404(OfficerProfile, id=officer_id)
+        if officer_profile.user == request.user:
+            messages.error(request, _('You cannot delete your own admin account.'))
+            return redirect('admin_dashboard')
+
+        username = officer_profile.user.username
+        user = officer_profile.user
+        officer_profile.delete()
+        user.delete()
+        messages.success(request, _('Officer "%(username)s" removed successfully!') % {'username': username})
+
+    return redirect('admin_dashboard')
 
 @login_required
 def update_complaint_status(request, complaint_id):
