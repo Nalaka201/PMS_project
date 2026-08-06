@@ -10,6 +10,7 @@
       }
     }
   ],
+  "buildCommand": "python manage.py collectstatic --noinput",
   "routes": [
     {
       "src": "/static/(.*)",
