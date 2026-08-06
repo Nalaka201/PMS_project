@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+try:
+    import dj_database_url
+    HAS_DJ_DATABASE_URL = True
+except ImportError:
+    HAS_DJ_DATABASE_URL = False
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-))$h=m+45ej5^_f0-w_!u795x(rocjhnb_^ir^(r0=ctxk0o^m'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-))$h=m+45ej5^_f0-w_!u795x(rocjhnb_^ir^(r0=ctxk0o^m')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost', '*']
 
@@ -78,12 +86,23 @@ WSGI_APPLICATION = 'complaints_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# Use PostgreSQL on Vercel (DATABASE_URL env var), fallback to SQLite locally
+_db_url = os.environ.get('DATABASE_URL', '')
+if _db_url and HAS_DJ_DATABASE_URL:
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=_db_url,
+            conn_max_age=600,
+            ssl_require=True,
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
